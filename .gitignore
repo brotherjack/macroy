@@ -21,3 +21,6 @@ erl_crash.dump
 
 # Added direnv for sensitive info
 .envrc
+
+# Ignore emacs temp files
+.#*

@@ -44,8 +44,7 @@ config :todo, ecto_repos: [Todo.Repo]
 
 config :todo, Todo.Repo,
   database: "macroy",
-  username: "postgres",
+  username: "macroy",
   password: System.get_env("passw"),
   hostname: "localhost",
   portname: "5432"
-

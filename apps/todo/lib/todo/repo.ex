@@ -3,3 +3,4 @@ defmodule Todo.Repo do
     otp_app: :todo,
     adapter: Ecto.Adapters.Postgres
 end
+

@@ -19,7 +19,7 @@ defmodule Todo.MixProject do
   def application do
     [
       extra_applications: [:logger],
-      mod: {Todo.Application, []}
+      mod: {Todo.Application, [:timex]}
     ]
   end
 
@@ -30,7 +30,8 @@ defmodule Todo.MixProject do
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
       # {:sibling_app_in_umbrella, in_umbrella: true}
       {:ecto_sql, "~> 3.1.6"},
-      {:postgrex, "~> 0.15.0"}
+      {:postgrex, "~> 0.15.0"},
+      {:timex, "~> 3.5"}
     ]
   end
 end
