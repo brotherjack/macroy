@@ -4,3 +4,5 @@
             <%= orgfile.host %> on path: <%= orgfile.path %>></li>
     <% end %>
 </ul>
+
+<a href="<%= Routes.page_path(@conn, :index) %>">HOME</a>
