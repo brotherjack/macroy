@@ -1,21 +1,12 @@
 <section class="phx-hero">
   <h1><%= gettext "Welcome to %{name}!", name: "Macroy" %></h1>
-  <p>An open source,<br /> <em>free as in freedom</em>,<br/> todolist application.</p>
-</section>
-
-<section class="row">
-  <article class="column">
-    <h2>Resources</h2>
-    <h3>YOU GET NOTHING!</h3>
-  </article>
-  <article class="column">
-    <h2>Help</h2>
-    <h3>YOU LOSE!</h3>
-  </article>
+  <p>An open source,<br /> <em>free as in freedom</em>,<br/> todolist
+  application.</p>
 </section>
 
 <section class="row">
     <article>
-        <h1>SO GOOD DAY, SIR! GET OUT!!!</h1>
+        <h3>This app doesn't really do anything other than list OrgFiles you
+        have to add with iex, but that's already more than nothing, right?</h3>
     </article>
 </section>
