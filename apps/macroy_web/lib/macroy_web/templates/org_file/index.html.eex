@@ -2,7 +2,7 @@
 <ul>
     <%= for orgfile <- @orgfiles do %>
         <li><strong><%= orgfile.filename %></strong> @
-            <%= orgfile.host %> on path: <%= orgfile.path %>></li>
+            <%= orgfile.host %> on path: <%= orgfile.path %></li>
     <% end %>
 </ul>
 

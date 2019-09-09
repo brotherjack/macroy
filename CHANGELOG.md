@@ -12,6 +12,7 @@ and this project adheres to
 
 ### Fixed
 - Copy/paste Errors in CHANGELOG links.
+- Removed stray '>' from OrgFile index.
 
 ## [0.0.1] - 2019-09-08
 ### Added
