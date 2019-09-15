@@ -7,4 +7,6 @@ defmodule Todo do
   def list_org_files do
     @repo.all(OrgFile)
   end
+
+  def get_org_file(id), do: @repo.get!(OrgFile, id)
 end

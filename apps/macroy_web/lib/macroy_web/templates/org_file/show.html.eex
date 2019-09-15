@@ -1,0 +1,8 @@
+<h1><%= @orgfile.filename %></h1>
+
+<ul>
+    <li><strong>Host:</strong> <%= @orgfile.host %></li>
+    <li><strong>Path:</strong> <%= @orgfile.path %></li>
+</ul>
+
+<%= link("Back to index", to: Routes.org_file_path(@conn, :index))  %>

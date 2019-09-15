@@ -7,6 +7,10 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Show specific OrgFile 
+- Link to each specific OrgFile from index.
+- Link from specific OrgFile to OrgFile index.
 
 ## [0.0.2]
 ### Added

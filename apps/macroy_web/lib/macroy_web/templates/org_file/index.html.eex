@@ -1,8 +1,10 @@
 <h2>OrgFile Locations</h2>
 <ul>
     <%= for orgfile <- @orgfiles do %>
-        <li><strong><%= orgfile.filename %></strong> @
-            <%= orgfile.host %> on path: <%= orgfile.path %></li>
+        <li><strong>
+            <%= link(orgfile.filename, to: Routes.org_file_path(@conn, :show, orgfile)) %>
+        </strong> @ <%= orgfile.host %> on path: <%= orgfile.path %>
+        </li>
     <% end %>
 </ul>
 

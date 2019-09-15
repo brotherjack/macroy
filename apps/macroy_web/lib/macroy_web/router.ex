@@ -17,7 +17,7 @@ defmodule MacroyWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    resources "/orgfiles", OrgFileController, only: [:index]
+    resources "/orgfiles", OrgFileController, only: [:index, :show]
   end
 
   # Other scopes may use custom stacks.
