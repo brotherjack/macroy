@@ -15,7 +15,7 @@
             <li><a href="https://github.com/brotherjack/macroy">See the #{CODE}</a></li>
           </ul>
         </nav>
-        <a href="https://github.com/brotherjack/macroy" class="phx-logo">
+        <a href="<%= Routes.page_path(@conn, :index) %>" class="phx-logo">
           <img src="<%= Routes.static_path(@conn, "/images/macroy_banner.png") %>" alt="Macroy Logo"/>
         </a>
       </section>

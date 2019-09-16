@@ -14,6 +14,9 @@ and this project adheres to
 - Can add new orgfiles.
 - Now ignores .org files.
 
+### Changed
+- Clicking on the banner now redirects you back to /.
+
 ## [0.0.2]
 ### Added
 - Added a header for the OrgFile index.
