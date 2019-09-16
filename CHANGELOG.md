@@ -13,6 +13,7 @@ and this project adheres to
 - Link from specific OrgFile to OrgFile index.
 - Can add new orgfiles.
 - Now ignores .org files.
+- Link on front page to new OrgFile creation page.
 
 ### Changed
 - Clicking on the banner now redirects you back to /.

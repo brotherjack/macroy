@@ -10,5 +10,6 @@
             <a href="<%= Routes.org_file_path(@conn, :index)  %>">list OrgFiles
             </a> you have to add with iex, but that's already more than
             nothing, right?</h3>
+        <h3>Well, I guess you can also <a href="<%= Routes.org_file_path(@conn, :new)%>">add OrgFiles</a> too...</h3>
     </article>
 </section>
