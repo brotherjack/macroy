@@ -24,3 +24,6 @@ erl_crash.dump
 
 # Ignore emacs temp files
 .#*
+
+# Ignore orgfiles
+*.org

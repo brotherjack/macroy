@@ -1,0 +1,17 @@
+<h1>New Org File</h1>
+
+<%= form_for @orgfile, Routes.org_file_path(@conn, :create), fn f -> %>
+    <%= label f, :host %>
+    <%= text_input f, :host %>
+
+    <%= label f, :path %>
+    <%= text_input f, :path %>
+
+    <%= label f, :filename %>
+    <%= text_input f, :filename %>
+
+    <div>
+        <%= submit "Submit" %>
+    </div>
+<%= end %>
+

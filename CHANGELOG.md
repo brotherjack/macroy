@@ -11,6 +11,8 @@ and this project adheres to
 - Show specific OrgFile 
 - Link to each specific OrgFile from index.
 - Link from specific OrgFile to OrgFile index.
+- Can add new orgfiles.
+- Now ignores .org files.
 
 ## [0.0.2]
 ### Added

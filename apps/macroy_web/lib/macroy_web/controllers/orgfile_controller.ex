@@ -6,8 +6,18 @@ defmodule MacroyWeb.OrgFileController do
     render(conn, "index.html", orgfiles: orgfiles)
   end
 
+  def new(conn, _params) do
+    orgfile = Todo.new_org_file()
+    render(conn, "new.html", orgfile: orgfile)
+  end
+
   def show(conn, %{"id" => id}) do
     orgfile = Todo.get_org_file(id)
     render(conn, "show.html", orgfile: orgfile)
+  end
+
+  def create(conn, %{"org_file" => orgfile_params}) do
+    {:ok, orgfile} = Todo.insert_org_file(orgfile_params)
+    redirect(conn, to: Routes.org_file_path(conn, :show, orgfile))
   end
 end
