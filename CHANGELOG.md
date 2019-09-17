@@ -14,11 +14,13 @@ and this project adheres to
 - Can add new orgfiles.
 - Now ignores .org files.
 - Link on front page to new OrgFile creation page.
+- Error message now displayed on error in OrgFile creation. 
 
 ### Changed
 - Clicking on the banner now redirects you back to /.
 
-## [0.0.2]
+
+## [0.0.2] - 2019-09-09
 ### Added
 - Added a header for the OrgFile index.
 
