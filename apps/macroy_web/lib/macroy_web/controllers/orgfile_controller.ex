@@ -22,4 +22,17 @@ defmodule MacroyWeb.OrgFileController do
       {:error, orgfile} -> render(conn, "new.html", orgfile: orgfile)
     end
   end
+
+  def edit(conn, %{"id" => id}) do
+    orgfile = Todo.edit_org_file(id)
+    render(conn, "edit.html", orgfile: orgfile)
+  end
+
+  def update(conn, %{"id" => id, "org_file" => orgfile_params}) do
+    orgfile = Todo.get_org_file(id)
+    case Todo.update_org_file(orgfile, orgfile_params)do
+      {:ok, orgfile} -> redirect(conn, to: Routes.org_file_path(conn, :show, orgfile))
+      {:error, orgfile} -> render(conn, "edit.html", orgfile: orgfile)
+    end
+  end
 end

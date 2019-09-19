@@ -1,0 +1,22 @@
+<%=  form_for @orgfile, @action, fn f -> %>
+    <%= if @orgfile.action do %>
+        <div class="alert alert-danger">
+             There are errors in your submission. Please correct them below.
+        </div>
+    <% end %>
+    <%= label f, :host %>
+    <%= text_input f, :host %>
+    <%= error_tag f, :host  %>>
+
+    <%= label f, :path %>
+    <%= text_input f, :path %>
+    <%= error_tag f, :path %>
+
+    <%= label f, :filename %>
+    <%= text_input f, :filename %>
+    <%= error_tag f, :filename %>
+
+    <div>
+        <%= submit "Submit" %>
+    </div>
+<%= end %>

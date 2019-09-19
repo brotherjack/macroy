@@ -17,4 +17,15 @@ defmodule Todo do
     |> OrgFile.changeset(attrs)
     |> @repo.insert()
   end
+
+  def edit_org_file(id) do
+    get_org_file(id)
+    |> OrgFile.changeset()
+  end
+
+  def update_org_file(%OrgFile{} = orgfile, updates) do
+    orgfile
+    |> OrgFile.changeset(updates)
+    |> @repo.update()
+  end
 end

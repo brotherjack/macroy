@@ -1,22 +1,4 @@
 <h1>New Org File</h1>
 
-<%= form_for @orgfile, Routes.org_file_path(@conn, :create), fn f -> %>
-    <%= if @orgfile.action do %>
-        <div class="alert alert-danger">
-            There are errors in your submission. Please correct them below.
-        </div>
-    <% end %>
-    <%= label f, :host %>
-    <%= text_input f, :host %>
-
-    <%= label f, :path %>
-    <%= text_input f, :path %>
-
-    <%= label f, :filename %>
-    <%= text_input f, :filename %>
-
-    <div>
-        <%= submit "Submit" %>
-    </div>
-<%= end %>
+<%= render("form.html", orgfile: @orgfile, action: Routes.org_file_path(@conn, :create)) %>
 
