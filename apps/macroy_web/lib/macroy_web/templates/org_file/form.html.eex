@@ -6,7 +6,7 @@
     <% end %>
     <%= label f, :host %>
     <%= text_input f, :host %>
-    <%= error_tag f, :host  %>>
+    <%= error_tag f, :host  %>
 
     <%= label f, :path %>
     <%= text_input f, :path %>

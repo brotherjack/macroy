@@ -4,6 +4,7 @@
         <li><strong>
             <%= link(orgfile.filename, to: Routes.org_file_path(@conn, :show, orgfile)) %>
         </strong> @ <%= orgfile.host %> on path: <%= orgfile.path %>
+        - <%= link("edit", to: Routes.org_file_path(@conn, :edit, orgfile))  %>
         </li>
     <% end %>
 </ul>

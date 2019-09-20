@@ -2,3 +2,4 @@
 
 <%= render("form.html", orgfile: @orgfile, action: Routes.org_file_path(@conn, :create)) %>
 
+<a href="<%= Routes.org_file_path(@conn, :index)  %>">Back to OrgFile Index << </a>

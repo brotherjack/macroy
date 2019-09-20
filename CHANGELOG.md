@@ -14,7 +14,9 @@ and this project adheres to
 - Can add new orgfiles.
 - Now ignores .org files.
 - Link on front page to new OrgFile creation page.
-- Error message now displayed on error in OrgFile creation. 
+- Error message now displayed on error in OrgFile creation.
+- Navigational links for OrgFile CRUD.
+- Edit/update capacity for OrgFiles.
 
 ### Changed
 - Clicking on the banner now redirects you back to /.

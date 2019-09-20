@@ -1,3 +1,5 @@
 <h1>Edit <%= @orgfile.data.filename  %></h1>
 
 <%= render("form.html", orgfile: @orgfile, action: Routes.org_file_path(@conn, :update, @orgfile.data)) %>
+
+<a href="<%= Routes.org_file_path(@conn, :index)  %>">Back to OrgFile Index << </a>
