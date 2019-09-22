@@ -17,6 +17,7 @@ and this project adheres to
 - Error message now displayed on error in OrgFile creation.
 - Navigational links for OrgFile CRUD.
 - Edit/update capacity for OrgFiles.
+- Installed Ex-Machina for creating test data.
 
 ### Changed
 - Clicking on the banner now redirects you back to /.
