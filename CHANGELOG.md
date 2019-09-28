@@ -7,6 +7,8 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [0.1.0] - 2019-09-28
 ### Added
 - Show specific OrgFile 
 - Link to each specific OrgFile from index.
@@ -21,7 +23,8 @@ and this project adheres to
 
 ### Changed
 - Clicking on the banner now redirects you back to /.
-
+- Moved orgfile functions from Todo.Task to Todo.OrgFiles
+- Refactored OrgFile parsing for readability and maintance.
 
 ## [0.0.2] - 2019-09-09
 ### Added
@@ -40,4 +43,5 @@ and this project adheres to
 [Unreleased]: https://github.com/brotherjack/macroy/compare/v0.0.2...HEAD
 [0.0.1]: https://github.com/brotherjack/macroy/releases/tag/v0.0.1
 [0.0.2]: https://github.com/brotherjack/macroy/compare/v0.0.1...v0.0.2
+[0.1.0]: https://github.com/brotherjack/macroy/compare/v0.0.2...v0.1.0
 
