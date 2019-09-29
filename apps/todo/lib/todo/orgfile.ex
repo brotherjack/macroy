@@ -70,6 +70,8 @@ defmodule Todo.OrgFile do
         parse(t, task, todos, new_category, subcategory)
       {:subcat, new_subcategory} ->
         parse(t, task, todos, category, new_subcategory)
+      {:nothing, _} -> # TODO Add logger and pass line to it
+        parse(t, task, todos, category, subcategory)
     end
   end
 
@@ -80,6 +82,7 @@ defmodule Todo.OrgFile do
       String.contains?(line, ["TODO", "DONE"]) -> {:name, get_name(line)}
       String.match?(line, ~r/\*\*+ (.+)/) -> {:subcat, get_subcategory(line)}
       String.match?(line, ~r/\* (.+)/) -> {:cat, get_category(line)}
+      true -> {:nothing, line}
     end
   end
 
