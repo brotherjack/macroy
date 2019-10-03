@@ -9,4 +9,3 @@
     <% end %>
 </ul>
 
-<a href="<%= Routes.page_path(@conn, :index) %>">HOME</a>

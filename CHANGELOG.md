@@ -15,6 +15,9 @@ and this project adheres to
   match.
 - Changed CSS frame work from Milligram to Bulma.
 
+### Removed
+- Antiquated back links.
+
 ## [0.1.0] - 2019-09-28
 ### Added
 - Show specific OrgFile 

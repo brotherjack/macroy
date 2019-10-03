@@ -5,4 +5,3 @@
     <li><strong>Path:</strong> <%= @orgfile.path %></li>
 </ul>
 
-<%= link("Back to index", to: Routes.org_file_path(@conn, :index))  %>
