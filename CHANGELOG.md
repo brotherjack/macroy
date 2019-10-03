@@ -7,9 +7,13 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Now with a Navbar!
+
 ### Changed
 - Parse line in OrgFile read will now return a keyword with nothing, on no
   match.
+- Changed CSS frame work from Milligram to Bulma.
 
 ## [0.1.0] - 2019-09-28
 ### Added
