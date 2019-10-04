@@ -1,22 +1,27 @@
 <%=  form_for @orgfile, @action, fn f -> %>
     <%= if @orgfile.action do %>
         <div class="alert alert-danger">
-             There are errors in your submission. Please correct them below.
+            There are errors in your submission. Please correct them below.
         </div>
     <% end %>
-    <%= label f, :host %>
-    <%= text_input f, :host %>
-    <%= error_tag f, :host  %>
 
-    <%= label f, :path %>
-    <%= text_input f, :path %>
-    <%= error_tag f, :path %>
-
-    <%= label f, :filename %>
-    <%= text_input f, :filename %>
-    <%= error_tag f, :filename %>
-
-    <div>
-        <%= submit "Submit" %>
-    </div>
+    <div class="field">
+        <%= label f, :host %>
+        <div class="control">
+            <%= text_input f, :host, [{:class, "input"}, {:placeholder, "Host"}] %>
+            <%= error_tag f, :host  %>
+        </div>
+        <%= label f, :path %>
+        <div class="control">
+            <%= text_input f, :path, [{:class, "input"}, {:placeholder, "Host"}] %>
+            <%= error_tag f, :path %>
+        </div>
+        <%= label f, :filename %>
+        <div class="control">
+            <%= text_input f, :filename, [{:class, "input"}, {:placeholder, "Host"}] %>
+            <%= error_tag f, :filename %>
+        </div>
+        <div class="control">
+             <button class="button is-link" type="Submit">Submit</button>
+        </div>
 <%= end %>

@@ -1,4 +1,4 @@
-<h1><%= @orgfile.filename %></h1>
+<h3 class="title is-3"><%= @orgfile.filename %></h3>
 
 <ul>
     <li><strong>Host:</strong> <%= @orgfile.host %></li>

@@ -1,4 +1,4 @@
-<h2>OrgFile Locations</h2>
+<h3 class="title is-3">OrgFile Locations</h3>
 <ul>
     <%= for orgfile <- @orgfiles do %>
         <li><strong>

@@ -1,4 +1,4 @@
-<h1>Edit <%= @orgfile.data.filename  %></h1>
+<h3 class="title is-3">Edit <%= @orgfile.data.filename  %></h3>
 
 <%= render("form.html", orgfile: @orgfile, action: Routes.org_file_path(@conn, :update, @orgfile.data)) %>
 
