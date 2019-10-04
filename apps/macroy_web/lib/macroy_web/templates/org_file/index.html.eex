@@ -1,11 +1,28 @@
 <h3 class="title is-3">OrgFile Locations</h3>
-<ul>
-    <%= for orgfile <- @orgfiles do %>
-        <li><strong>
-            <%= link(orgfile.filename, to: Routes.org_file_path(@conn, :show, orgfile)) %>
-        </strong> @ <%= orgfile.host %> on path: <%= orgfile.path %>
-        - <%= link("edit", to: Routes.org_file_path(@conn, :edit, orgfile))  %>
-        </li>
-    <% end %>
-</ul>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Filename</th>
+            <th>Host</th>
+            <th>Path</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <%= for orgfile <- @orgfiles do %>
+            <tr>
+                <td><%= link(orgfile.filename, to: Routes.org_file_path(@conn, :show, orgfile)) %></td>
+                <td><%= orgfile.host %></td>
+                <td><%= orgfile.path %></td>
+                <td>
+                    <button
+                        onclick="location.href='<%= Routes.org_file_path(@conn, :edit, orgfile) %>'"
+                        type="button"
+                        class="button is-link"
+                    >Edit</button>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
 

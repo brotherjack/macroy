@@ -3,5 +3,11 @@
 <ul>
     <li><strong>Host:</strong> <%= @orgfile.host %></li>
     <li><strong>Path:</strong> <%= @orgfile.path %></li>
+    <li><button
+            onclick="location.href='<%= Routes.org_file_path(@conn, :edit, @orgfile) %>'"
+            type="button"
+            class="button is-link"
+        >Edit</button>
+    </li>
 </ul>
 

@@ -14,6 +14,7 @@ and this project adheres to
 - Parse line in OrgFile read will now return a keyword with nothing, on no
   match.
 - Changed CSS frame work from Milligram to Bulma.
+- Improved look of OrgFile editing pages.
 
 ### Removed
 - Antiquated back links.
