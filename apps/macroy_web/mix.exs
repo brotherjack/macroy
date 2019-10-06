@@ -46,7 +46,8 @@ defmodule MacroyWeb.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:ex_machina, "~> 2.3", only: :test},
-      {:mox, "~> 0.5", only: :test}
+      {:mox, "~> 0.5", only: :test},
+      {:doorman, "~> 0.6.2"}
     ]
   end
 

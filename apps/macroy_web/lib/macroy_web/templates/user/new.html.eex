@@ -1,0 +1,27 @@
+<h2 class="title is-2">START YOUR JOURNEY DOING...things...</h2>
+
+<h6 class="title is-6">...as soon as there is useful things to chart your todos?</h6>
+
+<%=  form_for @user, Routes.user_path(@conn, :create),fn f -> %>
+  <%= if @user.action do %>
+    <div class="alert alert-danger">
+      There are errors in your submission. Please correct them below.
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= label f, :email %>
+    <div class="control">
+      <%= text_input f, :email, [{:class, "input"}, {:placeholder, "Email"}] %>
+      <%= error_tag f, :email  %>
+    </div>
+    <%= label f, :password %>
+    <div class="control">
+      <%= text_input f, :password, [{:class, "input"}, {:placeholder, "Password"}, {:type, "password"}] %>
+      <%= error_tag f, :password %>
+    </div>
+    <div class="control">
+      <button class="button is-link" type="Submit">Submit</button>
+    </div>
+  </div>
+<% end %>

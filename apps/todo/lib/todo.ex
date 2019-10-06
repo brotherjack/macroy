@@ -1,6 +1,8 @@
 defmodule Todo do
   alias Todo.Task, as: Task
   alias Todo.OrgFile, as: OrgFile
+  alias Todo.User, as: User
+  alias Doorman.Auth.Secret
 
   @repo Todo.Repo
 
@@ -27,5 +29,15 @@ defmodule Todo do
     orgfile
     |> OrgFile.changeset(updates)
     |> @repo.update()
+  end
+
+  def new_user, do: User.create_changeset(%User{})
+
+  def insert_user(user_params) do
+    user = %User{}
+    |> User.create_changeset(user_params)
+    |> Secret.put_session_secret()
+    @repo.insert(user)
+    {:ok, user}
   end
 end

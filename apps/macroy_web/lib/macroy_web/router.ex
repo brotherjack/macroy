@@ -4,6 +4,7 @@ defmodule MacroyWeb.Router do
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
+    plug Doorman.Login.Session
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
@@ -25,8 +26,8 @@ defmodule MacroyWeb.Router do
       :edit,
       :update
     ]
+    resources "/user", UserController, only: [:new, :create]
   end
-
   # Other scopes may use custom stacks.
   # scope "/api", MacroyWeb do
   #   pipe_through :api

@@ -48,3 +48,8 @@ config :todo, Todo.Repo,
   password: System.get_env("passw"),
   hostname: "localhost",
   portname: "5432"
+
+config :doorman,
+  repo: Todo.Repo,
+  secure_with: Doorman.Auth.Bcrypt,
+  user_module: Todo.User
