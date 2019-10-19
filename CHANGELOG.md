@@ -7,6 +7,8 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Removed
+- All the unnecessary bulma SASS.
 
 ## [1.0.0]
 ### Added
