@@ -1,31 +1,21 @@
-# This file is responsible for configuring your umbrella
-# and **all applications** and their dependencies with the
-# help of the Config module.
+# This file is responsible for configuring your application
+# and its dependencies with the aid of the Mix.Config module.
 #
-# Note that all applications in your umbrella share the
-# same configuration and dependencies, which is why they
-# all use the same configuration file. If you want different
-# configurations or dependencies per app, it is best to
-# move said applications out of the umbrella.
-import Config
+# This configuration file is loaded before any dependency and
+# is restricted to this project.
 
-config :macroy_web,
-  generators: [context_app: false]
+# General application configuration
+use Mix.Config
+
+config :macroy,
+  ecto_repos: [Macroy.Repo]
 
 # Configures the endpoint
-config :macroy_web, MacroyWeb.Endpoint,
+config :macroy, MacroyWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "VnPtEPAJpgFi+Sx5d9lFSLLaJHpuocfYA6BBtsTHqUMT6xl4grqIfNjFj8RHJFzE",
   render_errors: [view: MacroyWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: MacroyWeb.PubSub, adapter: Phoenix.PubSub.PG2]
-
-# Sample configuration:
-#
-#     config :logger, :console,
-#       level: :info,
-#       format: "$date $time [$level] $metadata$message\n",
-#       metadata: [:user_id]
-#
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -35,21 +25,14 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+# Todo stuffs
+config :macroy, ecto_repos: [Macroy.Repo]
+
+config :doorman,
+  repo: Macroy.Repo,
+  secure_with: Doorman.Auth.Bcrypt,
+  user_module: Macroy.User
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
-
-# Todo stuffs
-config :todo, ecto_repos: [Todo.Repo]
-
-config :todo, Todo.Repo,
-  database: "macroy",
-  username: "macroy",
-  password: System.get_env("passw"),
-  hostname: "localhost",
-  portname: "5432"
-
-config :doorman,
-  repo: Todo.Repo,
-  secure_with: Doorman.Auth.Bcrypt,
-  user_module: Todo.User

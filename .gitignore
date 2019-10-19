@@ -27,3 +27,6 @@ erl_crash.dump
 
 # Ignore orgfiles
 *.org
+
+# Ignore node modules
+/assets/node_modules

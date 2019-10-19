@@ -1,12 +1,22 @@
 use Mix.Config
 
+# Configure your database
+config :macroy, Macroy.Repo,
+  username: "macroy",
+  password: System.get_env("passw"),
+  database: "macroy_dev",
+  hostname: "localhost",
+  portname: "5432",
+  show_sensitive_data_on_connection_error: true,
+  pool_size: 10
+
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
-config :macroy_web, MacroyWeb.Endpoint,
+config :macroy, MacroyWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -17,7 +27,7 @@ config :macroy_web, MacroyWeb.Endpoint,
       "--mode",
       "development",
       "--watch-stdin",
-      cd: Path.expand("../apps/macroy_web/assets", __DIR__)
+      cd: Path.expand("../assets", __DIR__)
     ]
   ]
 
@@ -46,7 +56,7 @@ config :macroy_web, MacroyWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :macroy_web, MacroyWeb.Endpoint,
+config :macroy, MacroyWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
@@ -55,3 +65,13 @@ config :macroy_web, MacroyWeb.Endpoint,
       ~r"lib/macroy_web/templates/.*(eex)$"
     ]
   ]
+
+# Do not include metadata nor timestamps in development logs
+config :logger, :console, format: "[$level] $message\n"
+
+# Set a higher stacktrace during development. Avoid configuring such
+# in production as building large stacktraces may be expensive.
+config :phoenix, :stacktrace_depth, 20
+
+# Initialize plugs at runtime for faster development compilation
+config :phoenix, :plug_init_mode, :runtime
