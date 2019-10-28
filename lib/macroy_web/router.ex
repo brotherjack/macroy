@@ -18,15 +18,23 @@ defmodule MacroyWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    resources "/orgfiles", OrgFileController, only: [
-      :index,
-      :show,
-      :new,
-      :create,
-      :edit,
-      :update
-    ]
+
     resources "/user", UserController, only: [:new, :create]
+    get "/login", SessionController, :signin
+    post "/login", SessionController, :create
+    get "/logout", SessionController, :logout
+
+    scope "/orgfiles" do
+      pipe_through MacroyWeb.RequireLogin
+      resources "/", OrgFileController, only: [
+        :index,
+        :show,
+        :new,
+        :create,
+        :edit,
+        :update
+      ]
+    end
   end
   # Other scopes may use custom stacks.
   # scope "/api", MacroyWeb do

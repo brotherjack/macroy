@@ -7,6 +7,11 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- User authentication and login/logout functions.
+- Navbar has proper links for login or logout depending on session status.
+- Flash messages for logging in/out now work, and can be closed.
+
 ### Removed
 - All the unnecessary bulma SASS.
 

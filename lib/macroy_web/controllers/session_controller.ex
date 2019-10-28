@@ -11,8 +11,20 @@ defmodule MacroyWeb.SessionController do
     else
       conn
       |> put_flash(:error, "No user found with the provided credentials")
-      |> render("new.html")
+      |> redirect(to: Routes.user_path(conn, :new))
     end
+  end
+
+  def signin(conn, _params) do
+    new_session = %{"session" => %{"email" => nil, "password" => nil}}
+    render(conn, "login.html", session: new_session)
+  end
+
+  def logout(conn, _) do
+    conn
+    |> clear_session
+    |> put_flash(:notice, "Byeeeee!")
+    |> redirect(to: Routes.page_path(conn, :index))
   end
 end
 

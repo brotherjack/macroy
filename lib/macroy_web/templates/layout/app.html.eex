@@ -41,13 +41,20 @@
           </div>
           <div class="navbar-end">
             <div class="navbar-item">
-              <div class="buttons">
-                <a href="<%= Routes.user_path(@conn, :new) %> " class="button is-primary">
-                  <strong>Sign up</strong>
-                </a>
-                <a class="button is-light">
-                  Log in
-                </a>
+                <div class="buttons">
+                <%= unless Doorman.logged_in? @conn do %>
+                    <a href="<%= Routes.user_path(@conn, :new) %> " class="button is-primary">
+                        <strong>Sign up</strong>
+                    </a>
+                    <a href="<%= Routes.session_path(@conn, :signin) %>" class="button is-light">
+                        Log in
+                    </a>
+                <% end %>
+                <%= if Doorman.logged_in? @conn do %>
+                    <a href="<%= Routes.session_path(@conn, :logout) %>" class="button is-light">
+                        Log out
+                    </a>
+                <% end %>
               </div>
             </div>
           </div>
@@ -55,10 +62,31 @@
       </nav>
     </header>
     <main role="main" class="container">
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+        <%= unless is_nil(get_flash(@conn, :notice)) do %>
+            <div class="notification is-success">
+                <button class="delete"></button>
+                <%= get_flash(@conn, :notice) %>
+            </div>
+        <% end %>
+        <%= unless is_nil(get_flash(@conn, :error)) do %>
+            <div class="notification is-danger">
+                <button class="delete"></button>
+                <%= get_flash(@conn, :error) %>
+            </div>
+        <% end %>
       <%= render @view_module, @view_template, assigns %>
     </main>
-    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>">
+    </script>
+    <script type="text/javascript">
+     document.addEventListener('DOMContentLoaded', () => {
+         (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+             $notification = $delete.parentNode;
+             $delete.addEventListener('click', () => {
+                 $notification.parentNode.removeChild($notification);
+             });
+         });
+     });
+    </script>
   </body>
 </html>
