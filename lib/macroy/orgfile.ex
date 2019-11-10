@@ -10,6 +10,7 @@ defmodule Macroy.OrgFile do
     field :host, :string, default: "localhost"
     field :path, :string
     field :filename, :string
+    has_many :todos, Todo
     timestamps()
   end
 
@@ -130,3 +131,4 @@ defmodule Macroy.OrgFile do
     |> Map.put(:name, Enum.at(matches, 2))
   end
 end
+

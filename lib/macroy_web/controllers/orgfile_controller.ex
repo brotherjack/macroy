@@ -35,4 +35,20 @@ defmodule MacroyWeb.OrgFileController do
       {:error, orgfile} -> render(conn, "edit.html", orgfile: orgfile)
     end
   end
+
+  def upload(conn, %{"id" => id}) do
+    orgfile = id
+    |> Macroy.get_org_file
+    opts = orgfile
+    |> Macroy.upload_sync
+    |> upload_opts(orgfile)
+    redirect(conn, to: Routes.org_file_path(conn, :index, opts))
+  end
+
+  defp upload_opts(res, orgfile) do
+    case res do
+      {:ok, msg} -> [orgfile: orgfile, msg: msg, result: "success"]
+      {:error, msg} -> [orgfile: orgfile, msg: msg, result: "danger"]
+    end
+  end
 end

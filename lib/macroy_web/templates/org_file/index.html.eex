@@ -20,6 +20,11 @@
                         type="button"
                         class="button is-link"
                     >Edit</button>
+                    <button
+                        onclick='location.href="<%= Routes.org_file_path(@conn, :upload, orgfile) %>"'
+                        type="button"
+                        class="button is-link"
+                    >Upload</button>
                 </td>
             </tr>
         <% end %>
