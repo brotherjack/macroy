@@ -66,7 +66,6 @@ defmodule Macroy do
       join: of in assoc(t, :org_file),
       where: of.id == ^id,
       preload: [org_file: of]
-      #where: t.org_file_id == ^id
     )
     case @repo.all(query) do
       [] -> false
@@ -111,14 +110,9 @@ defmodule Macroy do
       |> Map.put(:updated_at, now) 
       |> Map.put(:inserted_at, now)
       |> Map.put(:org_file_id, orgfile.id)
-      |> Map.take(
-        [
-          :name, :is_done, :category, :subcategory, :closed_on, :scheduled_for,
-          :deadline_for, :org_file_id, :updated_at, :inserted_at
-        ]
-      )
+      |> Map.take(Todo.get_todo_fields_and_timestamps())
     end)
-    IO.inspect(todos)
+    
     @repo.insert_all(Todo, todos, opts)
   end
 end

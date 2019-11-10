@@ -5,6 +5,8 @@ defmodule Macroy.Todo do
   import Kernel
   use Timex
 
+  require Logger
+
   @moduledoc """
   Todos are things that need to be done and are not, or needed to be done, and
   have been.
@@ -24,13 +26,7 @@ defmodule Macroy.Todo do
 
   def changeset(todo, params \\ %{}) do
     todo
-    |> cast(params,
-    [
-      :name,  :is_done, :category, :subcategory,
-      :closed_on, :scheduled_for, :deadline_on,
-      :org_file_id
-    ]
-    )
+    |> cast(params, get_todo_fields())
     |> foreign_key_constraint(:org_file_id, name: "todos_org_file_id_fkey")
     |> validate_required([:name, :is_done])
     |> validate_subset(:is_done, [:DONE, :TODO])
@@ -38,9 +34,32 @@ defmodule Macroy.Todo do
 
   def update(todo, changes \\ %{}) do
     timestamp = NaiveDateTime.utc_now() |> NaiveDateTime.truncate(:second)
+    
     todo
-    |> change(
-      Map.merge(changes, %{updated_at: timestamp}, fn _k, _v1, v2 -> v2 end)
-    )
+    |> change(changes |> destruct_if_need_be |> Map.put(:updated_at, timestamp))
+  end
+
+  def get_todo_fields() do
+    [
+      :name,  :is_done, :category, :subcategory,
+      :closed_on, :scheduled_for, :deadline_on,
+      :org_file_id
+    ]
+  end
+
+  def get_todo_fields_and_timestamps() do
+    get_todo_fields() ++ [:updated_at, :inserted_at]
+  end
+
+  defp destruct_if_need_be(changes = %Macroy.Todo{}) do
+    Map.take(changes, get_todo_fields_and_timestamps())
+  end
+
+  defp destruct_if_need_be(changes = %{}) do
+    changes
+  end
+
+  defp destruct_if_need_be(_changes) do
+    Logger.warn("Changes is not a Todo struct or map")
   end
 end
