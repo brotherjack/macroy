@@ -7,15 +7,21 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [1.1.0] - 2019-11-11
 ### Added
 - User authentication and login/logout functions.
 - Navbar has proper links for login or logout depending on session status.
 - Flash messages for logging in/out now work, and can be closed.
+- Upload/sync functionality for orgfile bound todos.
+
+### Fixed
+- Update page for todos.
+- Link to version 1.0.0 in this changelog.
 
 ### Removed
 - All the unnecessary bulma SASS.
 
-## [1.0.0]
+## [1.0.0] - 2019-10-19
 ### Added
 - Now with a Navbar!
 
@@ -61,9 +67,9 @@ and this project adheres to
 - Link from OrgFile index to home.
 - Link from home to OrgFile index.
 
-[Unreleased]: https://github.com/brotherjack/macroy/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/brotherjack/macroy/compare/v1.1.0...HEAD
 [0.0.1]: https://github.com/brotherjack/macroy/releases/tag/v0.0.1
 [0.0.2]: https://github.com/brotherjack/macroy/compare/v0.0.1...v0.0.2
 [0.1.0]: https://github.com/brotherjack/macroy/compare/v0.0.2...v0.1.0
-[1.0.0]: https://github.com/brotherjack/macroy/compare/v0.1.0....v1.0.0
-
+[1.0.0]: https://github.com/brotherjack/macroy/compare/v0.1.0...v1.0.0
+[1.1.0]: https://github.com/brotherjack/macroy/compare/v1.0.0...v1.1.0

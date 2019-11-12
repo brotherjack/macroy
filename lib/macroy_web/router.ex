@@ -34,7 +34,7 @@ defmodule MacroyWeb.Router do
         :edit,
         :update
       ]
-      post "/upload", OrgFileController, :upload
+      get "/upload/:id", OrgFileController, :upload
     end
   end
   # Other scopes may use custom stacks.
