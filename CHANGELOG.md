@@ -10,9 +10,11 @@ and this project adheres to
 ### Added
 - Format validation for orgfile path and filename fields.
 - Testing components...finally!
+- Testing coverage on "/user/new"
 
 ### Changed
 - Refactored flash messages.
+- Content on "/user/new"
 
 ### Fixed
 - Naming error with `test/macroy_web` directory.

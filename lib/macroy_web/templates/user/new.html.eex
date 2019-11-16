@@ -1,6 +1,4 @@
-<h2 class="title is-2">START YOUR JOURNEY DOING...things...</h2>
-
-<h6 class="title is-6">...as soon as there is useful things to chart your todos?</h6>
+<h2 class="title is-2"><%= gettext "TODO #0: Make a %{name} User Account", name: "Macroy" %></h2>
 
 <%=  form_for @user, Routes.user_path(@conn, :create),fn f -> %>
   <%= if @user.action do %>
