@@ -1,9 +1,10 @@
 defmodule MacroyWeb.OrgFileController do
   use MacroyWeb, :controller
 
-  def index(conn, _params) do
+  def index(conn, params \\ %{}) do
     orgfiles = Macroy.list_org_files()
-    render(conn, "index.html", orgfiles: orgfiles)
+    params =  Map.merge(%{orgfiles: orgfiles}, params, fn _k, v1, _v2 -> v1 end)
+    render(conn, "index.html", params)
   end
 
   def new(conn, _params) do
@@ -40,10 +41,13 @@ defmodule MacroyWeb.OrgFileController do
     orgfile = id
     |> Macroy.get_org_file
     |> Macroy.upload_sync
-    conn = case orgfile do
-      {:ok, msg} -> put_flash(conn, :notice, msg)
-      {:error, msg} ->  put_flash(conn, :error, msg)
+    {type, msg} = case orgfile do
+      {:ok, msg} -> {:success, msg}
+      {:error, msg} ->  {:danger, msg}
     end
-    redirect(conn, to: Routes.org_file_path(conn, :index))
+    conn
+    |> put_flash(type, msg)
+    opts = %{msg_type: type, msg: msg}
+    redirect(conn, to: Routes.org_file_path(conn, :index, opts))
   end
 end

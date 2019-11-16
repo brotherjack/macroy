@@ -9,13 +9,15 @@ defmodule MacroyWeb.UserController do
 
   def create(conn, %{"user" => user_params}) do
     case Macroy.insert_user(user_params) do
-      {:ok, user} -> conn
-      |> put_flash( # TODO Figure out how to get the flash to work
-        :notice,
-        "You have setup a user with email'" <> get_field(user, :email) <> "'."
-      )
-      |> redirect(to: "/")
-      {:error, changeset} -> render(conn, "new.html", user: changeset)
+      {:ok, user} ->
+        conn
+        |> put_flash(
+          :success,
+          "You have setup a user with email'" <> get_field(user, :email) <> "'."
+        )
+        |> redirect(to: Routes.page_path(conn, :index, %{msg_type: :success}))
+      {:error, changeset} ->
+        render(conn, "new.html", user: changeset, msg_type: :danger)
     end
   end
 end

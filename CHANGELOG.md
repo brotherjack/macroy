@@ -10,6 +10,9 @@ and this project adheres to
 ### Added
 - Format validation for orgfile path and filename fields.
 
+### Changed
+- Refactored flash messages.
+
 ## [1.1.0] - 2019-11-11
 ### Added
 - User authentication and login/logout functions.

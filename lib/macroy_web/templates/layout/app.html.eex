@@ -62,16 +62,10 @@
       </nav>
     </header>
     <main role="main" class="container">
-        <%= unless is_nil(get_flash(@conn, :notice)) do %>
-            <div class="notification is-success">
+        <%= unless is_nil(assigns[:msg_type]) do %>
+            <div class="notification is-<%= @msg_type %>">
                 <button class="delete"></button>
-                <%= get_flash(@conn, :notice) %>
-            </div>
-        <% end %>
-        <%= unless is_nil(get_flash(@conn, :error)) do %>
-            <div class="notification is-danger">
-                <button class="delete"></button>
-                <%= get_flash(@conn, :error) %>
+                <%= get_flash(@conn, @msg_type) %>
             </div>
         <% end %>
       <%= render @view_module, @view_template, assigns %>
