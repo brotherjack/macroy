@@ -9,13 +9,13 @@ defmodule Macroy.User do
     field :password, :string, virtual: true
     field :session_secret, :string
 
-    timestamps
+    timestamps()
   end
 
-  def create_changeset(struct, params \\ %{}) do
-    struct
+  def changeset(user, params \\ %{}) do
+    user
     |> cast(params, [:email, :password])
-    |> validate_required([:email, :password])
     |> hash_password
+    |> validate_required([:email, :password])
   end
 end

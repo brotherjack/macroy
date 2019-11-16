@@ -20,7 +20,9 @@ defmodule MacroyWeb.OrgFileController do
   def create(conn, %{"org_file" => orgfile_params}) do
     case Macroy.insert_org_file(orgfile_params) do
       {:ok, orgfile} -> redirect(conn, to: Routes.org_file_path(conn, :show, orgfile))
-      {:error, orgfile} -> render(conn, "new.html", orgfile: orgfile)
+      {:error, orgfile} ->
+        IO.inspect(orgfile)
+        render(conn, "new.html", orgfile: orgfile)
     end
   end
 

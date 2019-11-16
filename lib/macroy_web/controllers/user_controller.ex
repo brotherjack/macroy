@@ -1,6 +1,5 @@
 defmodule MacroyWeb.UserController do
   use MacroyWeb, :controller
-  import Ecto.Changeset, only: [get_field: 2]
 
   def new(conn, _params) do
     changeset = Macroy.new_user()
@@ -13,11 +12,13 @@ defmodule MacroyWeb.UserController do
         conn
         |> put_flash(
           :success,
-          "You have setup a user with email '" <> get_field(user, :email) <> "'."
+          "You have setup a user with email '#{user.email}'."
         )
         |> redirect(to: Routes.page_path(conn, :index, %{msg_type: :success}))
       {:error, changeset} ->
-        render(conn, "new.html", user: changeset, msg_type: :danger)
+        conn
+        |> put_flash(:danger, "There are errors in your submission.")
+        |> render("new.html", user: changeset, msg_type: :danger)
     end
   end
 end

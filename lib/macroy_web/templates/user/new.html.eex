@@ -1,12 +1,6 @@
 <h2 class="title is-2"><%= gettext "TODO #0: Make a %{name} User Account", name: "Macroy" %></h2>
 
-<%=  form_for @user, Routes.user_path(@conn, :create),fn f -> %>
-  <%= if @user.action do %>
-    <div class="alert alert-danger">
-      There are errors in your submission. Please correct them below.
-    </div>
-  <% end %>
-
+<%=  form_for @user, Routes.user_path(@conn, :create), fn f -> %>
   <div class="field">
     <%= label f, :email %>
     <div class="control">

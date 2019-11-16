@@ -30,14 +30,13 @@ defmodule Macroy do
     |> @repo.update()
   end
 
-  def new_user, do: User.create_changeset(%User{})
+  def new_user, do: User.changeset(%User{})
 
   def insert_user(user_params) do
-    user = %User{}
-    |> User.create_changeset(user_params)
+    %User{}
+    |> User.changeset(user_params)
     |> Secret.put_session_secret()
-    @repo.insert(user)
-    {:ok, user}
+    |> @repo.insert()
   end
 
   def upload_sync(orgfile) do
