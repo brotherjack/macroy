@@ -9,6 +9,7 @@ and this project adheres to
 ## [Unreleased]
 ### Added
 - Format validation for orgfile path and filename fields.
+- Testing components...finally!
 
 ### Changed
 - Refactored flash messages.
