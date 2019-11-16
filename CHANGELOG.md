@@ -14,6 +14,9 @@ and this project adheres to
 ### Changed
 - Refactored flash messages.
 
+### Fixed
+- Naming error with `test/macroy_web` directory.
+
 ## [1.1.0] - 2019-11-11
 ### Added
 - User authentication and login/logout functions.
