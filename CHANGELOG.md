@@ -7,11 +7,15 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Format validation for orgfile path and filename fields.
+
 ## [1.1.0] - 2019-11-11
 ### Added
 - User authentication and login/logout functions.
 - Navbar has proper links for login or logout depending on session status.
-- Flash messages for logging in/out now work, and can be closed.
+- Flash messages for logging in/out now 
+work, and can be closed.
 - Upload/sync functionality for orgfile bound todos.
 
 ### Fixed

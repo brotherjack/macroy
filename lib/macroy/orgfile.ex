@@ -18,6 +18,8 @@ defmodule Macroy.OrgFile do
     orgfile
     |> cast(params, [:host, :path, :filename])
     |> validate_required([:path, :filename])
+    |> validate_format(:filename, ~r/^[A-Za-z_\-0-9]+$/)
+    |> validate_format(:path, ~r|^/[A-Za-z_\-0-9/]+$|)
   end
 
   @doc """
