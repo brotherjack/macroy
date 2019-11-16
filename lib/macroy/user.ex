@@ -15,6 +15,7 @@ defmodule Macroy.User do
   def create_changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:email, :password])
+    |> validate_required([:email, :password])
     |> hash_password
   end
 end

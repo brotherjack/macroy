@@ -13,6 +13,7 @@ and this project adheres to
 - Testing coverage on "/user/new"
 - Testing helper for getting flash messages.
 - Test coverage on successful user creation.
+- User controller now requires an email and a password.
 
 ### Changed
 - Refactored flash messages.
