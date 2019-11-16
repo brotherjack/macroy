@@ -11,6 +11,7 @@ and this project adheres to
 - Format validation for orgfile path and filename fields.
 - Testing components...finally!
 - Testing coverage on "/user/new"
+- Testing helper for getting flash messages.
 
 ### Changed
 - Refactored flash messages.
