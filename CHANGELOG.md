@@ -12,6 +12,7 @@ and this project adheres to
 - Testing components...finally!
 - Testing coverage on "/user/new"
 - Testing helper for getting flash messages.
+- Test coverage on successful user creation.
 
 ### Changed
 - Refactored flash messages.
@@ -19,6 +20,7 @@ and this project adheres to
 
 ### Fixed
 - Naming error with `test/macroy_web` directory.
+- Minor spelling error in flash message on successful user creation.
 
 ## [1.1.0] - 2019-11-11
 ### Added

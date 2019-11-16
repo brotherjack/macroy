@@ -13,7 +13,7 @@ defmodule MacroyWeb.UserController do
         conn
         |> put_flash(
           :success,
-          "You have setup a user with email'" <> get_field(user, :email) <> "'."
+          "You have setup a user with email '" <> get_field(user, :email) <> "'."
         )
         |> redirect(to: Routes.page_path(conn, :index, %{msg_type: :success}))
       {:error, changeset} ->
