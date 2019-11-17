@@ -15,6 +15,7 @@ and this project adheres to
 - Test coverage on successful user creation.
 - User controller now requires an email and a password.
 - Test covers invalid email on user creation. 
+- Test covers inserting new users.
 
 ### Changed
 - Refactored flash messages.
