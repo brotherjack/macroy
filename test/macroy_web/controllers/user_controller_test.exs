@@ -35,5 +35,16 @@ defmodule MacroyWeb.UserControllerTest do
       assert html_response(conn, 200)
       assert flash_message_contains(conn, "danger", "There are errors in your submission.")
     end
+
+    test "will not allow an invalid email format to be saved", %{conn: conn} do
+      invalid_email = "NOPE NOT @ that"
+      conn = post(
+        conn, "/user", %{"user" => Map.put(@valid_attrs, :email, invalid_email)}
+      )
+      assert html_response(conn, 200)
+      assert flash_message_contains(conn, "danger", "There are errors in your submission.")
+      password_err_msg = elem(Keyword.get(conn.assigns.user.errors, :email), 0)
+      assert password_err_msg == "has invalid format"
+    end
   end
 end

@@ -14,6 +14,7 @@ and this project adheres to
 - Testing helper for getting flash messages.
 - Test coverage on successful user creation.
 - User controller now requires an email and a password.
+- Test covers invalid email on user creation. 
 
 ### Changed
 - Refactored flash messages.
