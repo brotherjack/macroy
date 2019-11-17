@@ -30,3 +30,6 @@ erl_crash.dump
 
 # Ignore node modules
 /assets/node_modules
+
+# Ignore elixir-ls
+.elixir_ls/*
