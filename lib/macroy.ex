@@ -1,22 +1,20 @@
 defmodule Macroy do
-  alias Macroy.{OrgFile, User, Todo}
+  alias Macroy.{Repo, OrgFile, User, Todo}
   alias Doorman.Auth.Secret
   import Ecto.Query
 
-  @repo Macroy.Repo
-
   def list_org_files do
-    @repo.all(OrgFile)
+    Repo.all(OrgFile)
   end
 
   def new_org_file, do: OrgFile.changeset(%OrgFile{})
 
-  def get_org_file(id), do: @repo.get(OrgFile, id)
+  def get_org_file(id), do: Repo.get(OrgFile, id)
 
   def insert_org_file(attrs) do
     %OrgFile{}
     |> OrgFile.changeset(attrs)
-    |> @repo.insert()
+    |> Repo.insert()
   end
 
   def edit_org_file(id) do
@@ -27,7 +25,7 @@ defmodule Macroy do
   def update_org_file(%OrgFile{} = orgfile, updates) do
     orgfile
     |> OrgFile.changeset(updates)
-    |> @repo.update()
+    |> Repo.update()
   end
 
   def new_user, do: User.changeset(%User{})
@@ -36,7 +34,7 @@ defmodule Macroy do
     %User{}
     |> User.changeset(user_params)
     |> Secret.put_session_secret()
-    |> @repo.insert()
+    |> Repo.insert()
   end
 
   def upload_sync(orgfile) do
@@ -66,7 +64,7 @@ defmodule Macroy do
       where: of.id == ^id,
       preload: [org_file: of]
     )
-    case @repo.all(query) do
+    case Repo.all(query) do
       [] -> false
       orgfile_todos -> does_todo_exist_already?(orgfile, todo, orgfile_todos)
     end
@@ -112,6 +110,6 @@ defmodule Macroy do
       |> Map.take(Todo.get_todo_fields_and_timestamps())
     end)
     
-    @repo.insert_all(Todo, todos, opts)
+    Repo.insert_all(Todo, todos, opts)
   end
 end
