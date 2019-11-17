@@ -18,6 +18,7 @@ and this project adheres to
 ### Changed
 - Refactored flash messages.
 - Content on "/user/new"
+- Refactored user model and controller.
 
 ### Fixed
 - Naming error with `test/macroy_web` directory.
