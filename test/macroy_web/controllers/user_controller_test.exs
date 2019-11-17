@@ -29,5 +29,11 @@ defmodule MacroyWeb.UserControllerTest do
       assert html_response(conn, 200)
       assert flash_message_contains(conn, "danger", "There are errors in your submission.")
     end
+
+    test "user cannot create an account without an email", %{conn: conn} do
+      conn = post(conn, "/user", %{"user" => Map.take(@valid_attrs, [:password])})
+      assert html_response(conn, 200)
+      assert flash_message_contains(conn, "danger", "There are errors in your submission.")
+    end
   end
 end
