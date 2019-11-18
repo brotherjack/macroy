@@ -28,7 +28,6 @@ defmodule Macroy.MixProject do
   defp elixirc_paths(:test), do: ["lib", "test/support"]
   defp elixirc_paths(_), do: ["lib"]
 
-
   # Dependencies listed here are available only for this
   # project and cannot be accessed from applications inside
   # the apps folder.
