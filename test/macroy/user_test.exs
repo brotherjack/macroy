@@ -17,5 +17,10 @@ defmodule Macroy.UserTest do
       assert {:error, _} = Macroy.insert_user(Map.take(@dovakitty, [:email]))
       assert {:error, _} = Macroy.insert_user(Map.take(@wren, [:email]))
     end
+
+    test "rejects user changesets with invalid emails" do
+      user_w_invalid_email = Map.put(@dovakitty, :email, "derp S**t @ n")
+      assert {:error, _} = Macroy.insert_user(user_w_invalid_email)
+    end
   end
 end
