@@ -57,28 +57,43 @@ defmodule Macroy.OrgFile do
       Enum.filter(fn x -> x != "" end) 
   end
 
+  defp add_todo(todos, task, sched \\ nil) do
+    task = task
+    |> merge_task_and_sched(sched)
+    case task.is_done do
+      nil ->
+        if is_nil(task.closed_on) do
+          todos ++ [Map.put(task, :is_done, false)]
+        else
+          todos ++ [Map.put(task, :is_done, true)]
+        end
+      _ -> todos ++ [task]
+    end
+  end
+
+  defp merge_task_and_sched(task, sched) do
+    if not is_nil(sched) do
+      Map.merge(task, sched, fn _k, v1, v2 -> v1 || v2 end)
+    else
+      task
+    end
+  end
+
   defp parse([], %Todo{}, todos, _category, _subcategory) do
     todos
   end
 
   defp parse([], task, todos, _category, _subcategory) do
-    todos ++ [task]
+    add_todo(todos, task)
   end
 
   defp parse([h|t], task, todos, category, subcategory) do
     task = task |>
       Map.put(:category, category) |>
       Map.put(:subcategory, subcategory)
-    next_line = parse_line(h)
-    case next_line do
+    case parse_line(h) do
       {:sched, sched} ->
-        parse(
-          t,
-          %Todo{},
-          todos ++ [Map.merge(task, sched, fn _k,v1,v2 -> v1 || v2 end)],
-          category,
-          subcategory
-        )
+        parse(t, %Todo{}, add_todo(todos, task, sched), category, subcategory)
       {:name, new_task} ->
         parse(t, new_task, todos, category, subcategory)
       {:cat, new_category} ->

@@ -8,8 +8,12 @@ and this project adheres to
 
 ## [Unreleased]
 ### Added
-- OrgFile.read/1 test "todo entries without TODO|DONE will guess based on 
-  presence of CLOSED" -- currently failing.
+- Test coverage on OrgFile.read/1 will check to see if `todo.is_done` is filled
+  in based on whether `todo.closed_on` is found. 
+
+### Changed
+- OrgFile.read/1 will now check to see if `todo.is_done` is filled in based on
+  whether `todo.closed_on` is found.
 
 ## [1.2.0] - 2019-11-18
 ### Added
