@@ -7,6 +7,9 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- OrgFile.read/1 test "todo entries without TODO|DONE will guess based on 
+  presence of CLOSED" -- currently failing.
 
 ## [1.2.0] - 2019-11-18
 ### Added
