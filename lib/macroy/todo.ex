@@ -12,6 +12,13 @@ defmodule Macroy.Todo do
   have been.
   """
 
+  @type t :: %__MODULE__{
+    name: String.t(), is_done: boolean, category: String.t(),
+    subcategory: String.t(), closed_on: DateTime.t(),
+    scheduled_for: DateTime.t(), deadline_on: DateTime.t(),
+    org_file: OrgFile.t() | nil
+  }
+
   schema "todos" do
     field :name, :string
     field :is_done, :boolean

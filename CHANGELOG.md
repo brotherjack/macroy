@@ -7,6 +7,8 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.2.0] - 2019-11-18
 ### Added
 - Format validation for orgfile path and filename fields.
 - Testing components...finally!
@@ -16,11 +18,17 @@ and this project adheres to
 - User controller now requires an email and a password.
 - Test covers invalid email on user creation. 
 - Test covers inserting new users.
+- Added a testing mock for orgfiles.
+- Added @type's for Todo and OrgFile.
 
 ### Changed
 - Refactored flash messages.
 - Content on "/user/new"
 - Refactored user model and controller.
+- Made `OrgFile.parse/5` private.
+- Changed `OrgFile.prep_org_file_stream/1` to `OrgFile.prep_org_file_stream!/1`
+  to reflect that the function uses `File.parse!/1`.
+- Made `OrgFile.prep_org_file_stream!/1` public so that mock could be used.
 
 ### Fixed
 - Naming error with `test/macroy_web` directory.
@@ -87,9 +95,10 @@ work, and can be closed.
 - Link from OrgFile index to home.
 - Link from home to OrgFile index.
 
-[Unreleased]: https://github.com/brotherjack/macroy/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/brotherjack/macroy/compare/v1.2.0...HEAD
 [0.0.1]: https://github.com/brotherjack/macroy/releases/tag/v0.0.1
 [0.0.2]: https://github.com/brotherjack/macroy/compare/v0.0.1...v0.0.2
 [0.1.0]: https://github.com/brotherjack/macroy/compare/v0.0.2...v0.1.0
 [1.0.0]: https://github.com/brotherjack/macroy/compare/v0.1.0...v1.0.0
 [1.1.0]: https://github.com/brotherjack/macroy/compare/v1.0.0...v1.1.0
+[1.2.0]: https://github.com/brotherjack/macroy/compare/v1.1.0...v1.2.0

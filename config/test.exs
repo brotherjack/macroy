@@ -16,3 +16,5 @@ config :macroy, MacroyWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+config :macroy, org_file_reader: Macroy.OrgFileMock

@@ -6,6 +6,13 @@ defmodule Macroy.OrgFile do
   @moduledoc """
   OrgFiles are files containing `Macroy.Todo`s.
   """
+
+  @org_file_reader Application.get_env(:macroy, :org_file_reader, __MODULE__)
+  @type t :: %__MODULE__{
+    host: String.t(), path: String.t(), filename: String.t(),
+    todos: [Todo.t() | nil]
+  }
+
   schema "orgfiles" do
     field :host, :string, default: "localhost"
     field :path, :string
@@ -31,13 +38,18 @@ defmodule Macroy.OrgFile do
 
   Returns a list of Todos
   """
-  @spec read(OrgFile) :: [Todo]
+  @spec read(orgf :: OrgFile.t()) :: [Todo.t()]
   def read(orgf) do
     ofpath = Path.join(orgf.path, orgf.filename)
-    parse(prep_org_file_stream(ofpath), %Todo{}, [], nil, nil)
+    parse(@org_file_reader.prep_org_file_stream!(ofpath), %Todo{}, [], nil, nil)
   end
 
-  defp prep_org_file_stream(path) do
+  @doc """
+  Streams the contents of a file into a list of strings. Removes blank and
+  newlines.
+  """
+  @spec prep_org_file_stream!(path :: String.t()) :: [String.t()]
+  def prep_org_file_stream!(path) do
     File.stream!(path) |>
       Stream.map(&String.split(&1, "\n", trim: true)) |>
       Enum.to_list |>
@@ -45,15 +57,15 @@ defmodule Macroy.OrgFile do
       Enum.filter(fn x -> x != "" end) 
   end
 
-  def parse([], %Todo{}, todos, _category, _subcategory) do
+  defp parse([], %Todo{}, todos, _category, _subcategory) do
     todos
   end
 
-  def parse([], task, todos, _category, _subcategory) do
+  defp parse([], task, todos, _category, _subcategory) do
     todos ++ [task]
   end
 
-  def parse([h|t], task, todos, category, subcategory) do
+  defp parse([h|t], task, todos, category, subcategory) do
     task = task |>
       Map.put(:category, category) |>
       Map.put(:subcategory, subcategory)
