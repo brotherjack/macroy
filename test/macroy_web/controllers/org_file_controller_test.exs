@@ -56,5 +56,14 @@ defmodule  MacroyWeb.OrgFileControllerTest do
     test "redirects to login if user not logged in", %{conn: conn} do
       assert "/login" = redirected_to(get(conn, "/orgfiles/new"), 302)
     end
+
+    test "auth'd user can view orgfile creation page", %{conn: conn, user: user} do
+      resp = conn
+      |> assign(:current_user, user)
+      |> get("/orgfiles/new")
+      |> html_response(200)
+
+      assert resp =~ "New OrgFile"
+    end
   end
 end

@@ -7,6 +7,9 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added 
+- Test coverage for MacroyWeb.OrgFileController.new/2.
+
 ## [1.2.1] - 2019-11-19
 ### Added
 - Test coverage on OrgFile.read/1 will check to see if `todo.is_done` is filled
