@@ -12,7 +12,7 @@ and this project adheres to
 - Test coverage on OrgFile.read/1 will check to see if `todo.is_done` is filled
   in based on whether `todo.closed_on` is found. 
 - Test coverage on orgfile_controller.index/2 checks to see if index populates 
-  the page with orgfiles in database.
+  the page with orgfiles in database, if the user is logged in.
 
 ### Changed
 - OrgFile.read/1 will now check to see if `todo.is_done` is filled in based on

@@ -36,7 +36,7 @@ defmodule  MacroyWeb.OrgFileControllerTest do
 
   describe "index/2" do
     test "all files load", %{conn: conn, user: user} do
-      # Page doesn't explode in flames
+      # Page doesn't explode in flames when logged in
       resp = conn
       |> assign(:current_user, user)
       |> get("/orgfiles")
@@ -45,6 +45,10 @@ defmodule  MacroyWeb.OrgFileControllerTest do
       # Assert that each orgfile shows up 
       assert resp =~ @blorp_org.path
       assert resp =~ @css_org.path
+    end
+
+    test "redirects to login if not logged in", %{conn: conn} do
+      assert "/login" = redirected_to(get(conn, "/orgfiles"), 302)
     end
   end
 end
