@@ -1,4 +1,3 @@
-
 # Macroy
 All notable changes to this project will be documented in this file.
 
@@ -11,6 +10,11 @@ and this project adheres to
 - Test coverage for MacroyWeb.OrgFileController.new/2.
 - Header to sign in page. 
 - Test coverage for MacroyWeb.OrgFileController.create/2.
+
+### Fixed
+- "redirects to login if user not logged in" test for Macroy.OrgFile.new/2,
+  as previous test used a matching operator in an assert, where an equality 
+  comparison was necessary.
 
 ## [1.2.1] - 2019-11-19
 ### Added

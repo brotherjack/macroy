@@ -54,7 +54,7 @@ defmodule  MacroyWeb.OrgFileControllerTest do
     end
 
     test "redirects to login if not logged in", %{conn: conn} do
-      assert "/login" = redirected_to(get(conn, "/orgfiles"), 302)
+      assert "/login" == redirected_to(get(conn, "/orgfiles"), 302)
     end
   end
 
