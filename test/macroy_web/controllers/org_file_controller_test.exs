@@ -86,5 +86,10 @@ defmodule  MacroyWeb.OrgFileControllerTest do
 
       assert evil_plan_in_db.filename == @evil_plans_org.filename
     end
+
+    test "redirects to login if user not logged in", %{conn: conn} do
+      params = %{"org_file" => @evil_plans_org}
+      assert "/login" == redirected_to(post(conn, "/orgfiles", params), 302)
+    end
   end
 end
