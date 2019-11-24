@@ -10,6 +10,7 @@ and this project adheres to
 ### Added 
 - Test coverage for MacroyWeb.OrgFileController.new/2.
 - Header to sign in page. 
+- Test coverage for MacroyWeb.OrgFileController.create/2.
 
 ## [1.2.1] - 2019-11-19
 ### Added

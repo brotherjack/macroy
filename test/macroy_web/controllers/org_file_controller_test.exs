@@ -14,6 +14,12 @@ defmodule  MacroyWeb.OrgFileControllerTest do
     filename: "communism.org"
   }
 
+  @evil_plans_org %{
+    host: "mww.mars.gov",
+    path: "/home/evil",
+    filename: "bad_things_todo.org"
+  }
+
   @valid_user %{
     email: "kilroy@crimsonstarsoftware.org",
     password: "I'm in love with my own reflection. I can dance forever."
@@ -64,6 +70,21 @@ defmodule  MacroyWeb.OrgFileControllerTest do
       |> html_response(200)
 
       assert resp =~ "New OrgFile"
+    end
+  end
+
+  describe "create/2" do
+    test "logged in user can insert orgfiles", %{conn: conn, user: user} do
+      conn = conn
+      |> assign(:current_user, user)
+      |> post("/orgfiles", %{"org_file" => @evil_plans_org})
+
+      evil_plan_in_db = Repo.get_by(OrgFile, filename: @evil_plans_org.filename)
+      show_path = "/orgfiles/#{evil_plan_in_db.id}"
+
+      assert show_path == redirected_to(conn, 302)
+
+      assert evil_plan_in_db.filename == @evil_plans_org.filename
     end
   end
 end
