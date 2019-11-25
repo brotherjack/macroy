@@ -6,10 +6,16 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [1.3.0] - 2019-11-24
 ### Added 
 - Test coverage for MacroyWeb.OrgFileController.new/2.
 - Header to sign in page. 
 - Test coverage for MacroyWeb.OrgFileController.create/2.
+- Every OrgFile must now be owned by a user.
+
+### Changed
+- `Macroy.list_org_files/0` ->  `Macroy.list_org_files/1` as index will no 
+  longer show orgfiles owned by other users.
 
 ### Fixed
 - "redirects to login if user not logged in" test for Macroy.OrgFile.new/2,

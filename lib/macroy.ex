@@ -3,8 +3,13 @@ defmodule Macroy do
   alias Doorman.Auth.Secret
   import Ecto.Query
 
-  def list_org_files do
-    Repo.all(OrgFile)
+  def list_org_files(id) do
+    query = from(f in OrgFile,
+      join: u in assoc(f, :owner),
+      where: u.id == ^id,
+      preload: [owner: u]
+    )
+    Repo.all(query)
   end
 
   def new_org_file, do: OrgFile.changeset(%OrgFile{})
@@ -74,7 +79,7 @@ defmodule Macroy do
   defp process_todo_sync([todo|todos], orgfile, processed, errors) do
     todo = case does_todo_exist_already?(orgfile, todo) do
              {true, existing_todo} -> existing_todo |> Todo.update(todo)
-             false -> todo |> Todo.changeset 
+             false -> todo |> Todo.changeset
            end
     case todo.valid? do
       true ->
@@ -103,13 +108,13 @@ defmodule Macroy do
   def insert_all_orgfile_todos(orgfile, todos, opts \\ []) do
     now = NaiveDateTime.utc_now |> NaiveDateTime.truncate(:second)
     todos = Enum.map(todos, fn m ->
-      m 
-      |> Map.put(:updated_at, now) 
+      m
+      |> Map.put(:updated_at, now)
       |> Map.put(:inserted_at, now)
       |> Map.put(:org_file_id, orgfile.id)
       |> Map.take(Todo.get_todo_fields_and_timestamps())
     end)
-    
+
     Repo.insert_all(Todo, todos, opts)
   end
 end

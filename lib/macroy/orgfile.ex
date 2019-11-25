@@ -1,7 +1,7 @@
 defmodule Macroy.OrgFile do
   import Ecto.Changeset
   use Ecto.Schema
-  alias Macroy.Todo, as: Todo
+  alias Macroy.{Todo, User}
 
   @moduledoc """
   OrgFiles are files containing `Macroy.Todo`s.
@@ -17,13 +17,15 @@ defmodule Macroy.OrgFile do
     field :host, :string, default: "localhost"
     field :path, :string
     field :filename, :string
+    belongs_to :owner, User, on_replace: :delete
     has_many :todos, Todo
     timestamps()
   end
 
   def changeset(orgfile, params \\ %{}) do
     orgfile
-    |> cast(params, [:host, :path, :filename])
+    |> cast(params, [:host, :path, :filename, :owner_id])
+    |> foreign_key_constraint(:owner_id, name: "orgfiles_owner_id_fkey")
     |> validate_required([:path, :filename])
     |> validate_format(:filename, ~r/^[A-Za-z_\-0-9\.]+$/)
     |> validate_format(:path, ~r|^/[A-Za-z_\-0-9/]+$|)
@@ -54,7 +56,7 @@ defmodule Macroy.OrgFile do
       Stream.map(&String.split(&1, "\n", trim: true)) |>
       Enum.to_list |>
       List.flatten |>
-      Enum.filter(fn x -> x != "" end) 
+      Enum.filter(fn x -> x != "" end)
   end
 
   defp add_todo(todos, task, sched \\ nil) do

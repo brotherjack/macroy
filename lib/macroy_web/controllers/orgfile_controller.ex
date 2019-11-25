@@ -2,7 +2,7 @@ defmodule MacroyWeb.OrgFileController do
   use MacroyWeb, :controller
 
   def index(conn, params \\ %{}) do
-    orgfiles = Macroy.list_org_files()
+    orgfiles = Macroy.list_org_files(conn.assigns.current_user.id)
     params =  Map.merge(%{orgfiles: orgfiles}, params, fn _k, v1, _v2 -> v1 end)
     render(conn, "index.html", params)
   end
@@ -18,7 +18,11 @@ defmodule MacroyWeb.OrgFileController do
   end
 
   def create(conn, %{"org_file" => orgfile_params}) do
-    case Macroy.insert_org_file(orgfile_params) do
+    inserted_orgfile = orgfile_params
+    |> Map.put("owner_id", conn.assigns.current_user.id)
+    |> Macroy.insert_org_file()
+
+    case inserted_orgfile do
       {:ok, orgfile} -> redirect(conn, to: Routes.org_file_path(conn, :show, orgfile))
       {:error, orgfile} ->
         IO.inspect(orgfile)
