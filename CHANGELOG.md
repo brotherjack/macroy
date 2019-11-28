@@ -6,6 +6,12 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.2.3] - 2019-11-28
+### Fixed
+- The flash messages have been reapired, closing out [issue #1](
+  https://github.com/brotherjack/macroy/issues/1).
+
 ## [1.2.2] - 2019-11-24
 ### Added 
 - Test coverage for MacroyWeb.OrgFileController.new/2.
