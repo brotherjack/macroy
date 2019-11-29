@@ -48,7 +48,8 @@ defmodule Macroy.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:ex_machina, "~> 2.3", only: :test},
       {:mox, "~> 0.5", only: :test},
-      {:doorman, "~> 0.6.2"}
+      {:doorman, "~> 0.6.2"},
+      {:propcheck, "~> 1.1", only: [:test, :dev]}
     ]
   end
 
