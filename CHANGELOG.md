@@ -9,6 +9,7 @@ and this project adheres to
 ### Added
 - An owner field in the Todo schema which links a todo to a user.
 - A very basic template for Todo index.
+- A view for Todos.
 
 ## [1.2.3] - 2019-11-28
 ### Fixed
