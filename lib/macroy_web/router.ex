@@ -36,6 +36,11 @@ defmodule MacroyWeb.Router do
       ]
       get "/upload/:id", OrgFileController, :upload
     end
+
+    scope "/todos" do
+      pipe_through MacroyWeb.RequireLogin
+      resources "/", TodoController, only: [:index]
+    end
   end
   # Other scopes may use custom stacks.
   # scope "/api", MacroyWeb do
