@@ -46,7 +46,7 @@ defmodule MacroyWeb.OrgFileController do
   def upload(conn, %{"id" => id}) do
     orgfile = id
     |> Macroy.get_org_file
-    |> Macroy.upload_sync
+    |> Macroy.upload_sync(conn.assigns.current_user.id)
     case orgfile do
       {:ok, msg} ->
         conn

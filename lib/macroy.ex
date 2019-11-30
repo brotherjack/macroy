@@ -52,11 +52,12 @@ defmodule Macroy do
     |> Repo.insert()
   end
 
-  def upload_sync(orgfile) do
+  def upload_sync(orgfile, user_id) do
     case orgfile.host do
       "localhost" ->
         orgfile
         |> Macroy.OrgFile.read
+        |> Enum.map(fn todo -> Map.put(todo, :owner_id, user_id) end)
         |> process_todo_sync(orgfile)
     end
   end

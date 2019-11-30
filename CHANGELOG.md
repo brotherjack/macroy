@@ -12,6 +12,10 @@ and this project adheres to
 - A view for Todos.
 - A list todos API, (ie. Macroy.list_todos/1).
 
+### Changed
+- `OrgFile.upload_sync/1` has been changed to `OrgFile.upload_sync/2` to 
+  allow for the owner id to be inserted.
+
 ## [1.2.3] - 2019-11-28
 ### Fixed
 - The flash messages have been reapired, closing out [issue #1](
