@@ -6,11 +6,14 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.3.0] - 2019-11-30
 ### Added
 - An owner field in the Todo schema which links a todo to a user.
 - A very basic template for Todo index.
 - A view for Todos.
 - A list todos API, (ie. Macroy.list_todos/1).
+- A link in the navbar to Todo index.
 
 ### Changed
 - `OrgFile.upload_sync/1` has been changed to `OrgFile.upload_sync/2` to 
@@ -135,7 +138,7 @@ work, and can be closed.
 - Link from OrgFile index to home.
 - Link from home to OrgFile index.
 
-[Unreleased]: https://github.com/brotherjack/macroy/compare/v1.2.3...HEAD
+[Unreleased]: https://github.com/brotherjack/macroy/compare/v1.3.0...HEAD
 [0.0.1]: https://github.com/brotherjack/macroy/releases/tag/v0.0.1
 [0.0.2]: https://github.com/brotherjack/macroy/compare/v0.0.1...v0.0.2
 [0.1.0]: https://github.com/brotherjack/macroy/compare/v0.0.2...v0.1.0
@@ -145,3 +148,4 @@ work, and can be closed.
 [1.2.1]: https://github.com/brotherjack/macroy/compare/v1.2.0...v1.2.1
 [1.2.2]: https://github.com/brotherjack/macroy/compare/v1.2.1...v1.2.2
 [1.2.3]: https://github.com/brotherjack/macroy/compare/v1.2.2...v1.2.3
+[1.3.0]: https://github.com/brotherjack/macroy/compare/v1.2.3...v1.3.0

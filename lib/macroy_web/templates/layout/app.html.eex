@@ -38,6 +38,16 @@
                   </a>
               </div>
             </div>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    Todos
+                </a>
+                <div class="navbar-dropdown">
+                    <a href="<%= Routes.todo_path(@conn, :index)%>" class="navbar-item">
+                        Index
+                    </a>
+                </div>
+            </div>
           </div>
           <div class="navbar-end">
             <div class="navbar-item">
