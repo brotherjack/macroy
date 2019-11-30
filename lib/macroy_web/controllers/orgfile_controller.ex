@@ -47,13 +47,15 @@ defmodule MacroyWeb.OrgFileController do
     orgfile = id
     |> Macroy.get_org_file
     |> Macroy.upload_sync
-    {type, msg} = case orgfile do
-      {:ok, msg} -> {:success, msg}
-      {:error, msg} ->  {:danger, msg}
+    case orgfile do
+      {:ok, msg} ->
+        conn
+        |> put_flash(:success, msg)
+        |> redirect(to: Routes.org_file_path(conn, :index))
+      {:error, msg, _errors} ->
+        conn
+        |> put_flash(:danger, msg)
+        |> redirect(to: Routes.org_file_path(conn, :index))
     end
-    conn
-    |> put_flash(type, msg)
-    opts = %{msg_type: type, msg: msg}
-    redirect(conn, to: Routes.org_file_path(conn, :index, opts))
   end
 end
