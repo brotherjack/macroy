@@ -3,6 +3,16 @@ defmodule Macroy do
   alias Doorman.Auth.Secret
   import Ecto.Query
 
+  def list_todos(id) do
+    query = from(t in Todo,
+      join: u in assoc(t, :owner),
+      left_join: o in assoc(t, :org_file),
+      where: u.id == ^id,
+      preload: [owner: u, org_file: o]
+    )
+    Repo.all(query)
+  end
+
   def list_org_files(id) do
     query = from(f in OrgFile,
       join: u in assoc(f, :owner),

@@ -51,7 +51,7 @@ defmodule Macroy.Todo do
     [
       :name,  :is_done, :category, :subcategory,
       :closed_on, :scheduled_for, :deadline_on,
-      :org_file_id
+      :org_file_id, :owner_id
     ]
   end
 
