@@ -1,5 +1,5 @@
 defmodule Macroy.Todo do
-  alias Macroy.OrgFile
+  alias Macroy.{OrgFile, User}
   import Ecto.Changeset
   use Ecto.Schema
   import Kernel
@@ -27,6 +27,7 @@ defmodule Macroy.Todo do
     field :closed_on, :utc_datetime
     field :scheduled_for, :utc_datetime
     field :deadline_on, :utc_datetime
+    belongs_to :owner, User, on_replace: :delete
     belongs_to :org_file, OrgFile, on_replace: :nilify
     timestamps()
   end

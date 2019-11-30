@@ -6,6 +6,8 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- An owner field in the Todo schema which links a todo to a user.
 
 ## [1.2.3] - 2019-11-28
 ### Fixed
