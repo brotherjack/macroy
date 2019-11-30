@@ -16,13 +16,14 @@
         <%= for todo <- @todos do %>
             <tr>
                 <td><%= todo.name %></td>
-                <td><%= if todo.is_done?, do: "DONE", else: "TODO" %></td>
+                <td><%= if todo.is_done, do: "DONE", else: "TODO" %></td>
                 <td><%= todo.category %></td>
                 <td><%= todo.subcategory %></td>
                 <td><%= todo.closed_on %></td>
                 <td><%= todo.scheduled_for %></td>
                 <td><%= todo.deadline_on %></td>
-                <td><%= todo.org_file %></td>
+                <td><%= if todo.org_file, do: todo.org_file.filename, else: "" %></td>
             </tr>
+        <% end %>
     </tbody>
 </table>

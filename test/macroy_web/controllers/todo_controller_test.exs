@@ -33,7 +33,7 @@ defmodule MacroyWeb.TodoControllerTest do
     |> Map.put(:owner_id, user1.id)
 
     {:ok, user1_file} = Repo.insert(OrgFile.changeset(%OrgFile{}, user1_params))
-    todo_w_orgfile = %{
+    todo_w_orgfile = %Todo{
       category: "Social",
       closed_on: ~U[2019-08-09 17:43:00Z],
       deadline_on: ~U[2019-08-09 16:00:00Z],
@@ -45,7 +45,7 @@ defmodule MacroyWeb.TodoControllerTest do
       owner_id: user1.id,
       org_file_id: user1_file.id
     }
-    todo_wout_orgfile = %{
+    todo_wout_orgfile = %Todo{
       category: "Organizational",
       closed_on: ~U[2019-08-09 17:43:00Z],
       deadline_on: ~U[2019-08-09 16:00:00Z],
@@ -56,7 +56,7 @@ defmodule MacroyWeb.TodoControllerTest do
       subcategory: "Things",
       updated_at: ~N[2019-11-28 21:02:02]
     }
-    not_my_todo = %{
+    not_my_todo = %Todo{
       category: "Blorp",
       closed_on: ~U[2019-08-09 17:43:00Z],
       deadline_on: ~U[2019-08-09 16:00:00Z],
@@ -68,9 +68,9 @@ defmodule MacroyWeb.TodoControllerTest do
       updated_at: ~N[2019-11-28 21:02:02]
     }
 
-    {:ok, todo_1} = Repo.insert(Todo.changeset(%Todo{}, todo_w_orgfile)) 
-    {:ok, todo_2} = Repo.insert(Todo.changeset(%Todo{}, todo_wout_orgfile))
-    {:ok, not_my_todo} = Repo.insert(Todo.changeset(%Todo{}, not_my_todo))
+    {:ok, todo_1} = Repo.insert(Todo.changeset(todo_w_orgfile)) 
+    {:ok, todo_2} = Repo.insert(Todo.changeset(todo_wout_orgfile))
+    {:ok, not_my_todo} = Repo.insert(Todo.changeset(not_my_todo))
 
     {:ok,
      %{
