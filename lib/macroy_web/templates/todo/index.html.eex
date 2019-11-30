@@ -1,0 +1,28 @@
+<h3 class="title is-3">Todos</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Category</th>
+            <th>Subcategory</th>
+            <th>Closed On</th>
+            <th>Scheduled For</th>
+            <th>Deadline On</th>
+            <th>OrgFile</th>
+        </tr>
+    </thead>
+    <tbody>
+        <%= for todo <- @todos do %>
+            <tr>
+                <td><%= todo.name %></td>
+                <td><%= if todo.is_done?, do: "DONE", else: "TODO" %></td>
+                <td><%= todo.category %></td>
+                <td><%= todo.subcategory %></td>
+                <td><%= todo.closed_on %></td>
+                <td><%= todo.scheduled_for %></td>
+                <td><%= todo.deadline_on %></td>
+                <td><%= todo.org_file %></td>
+            </tr>
+    </tbody>
+</table>
