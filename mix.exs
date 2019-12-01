@@ -49,7 +49,11 @@ defmodule Macroy.MixProject do
       {:ex_machina, "~> 2.3", only: :test},
       {:mox, "~> 0.5", only: :test},
       {:doorman, "~> 0.6.2"},
-      {:propcheck, "~> 1.1", only: [:test, :dev]}
+      {:propcheck, "~> 1.1", only: [:test, :dev]},
+
+      # Phoenix Live View
+      {:phoenix_live_view, "~> 0.4.0"},
+      {:floki, ">= 0.0.0", only: :test}
     ]
   end
 
