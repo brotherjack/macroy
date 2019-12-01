@@ -9,6 +9,9 @@ and this project adheres to
 ### Added
 - Installed Phoenix LiveView.
 
+### Fixed
+- Spelling error with the Phoenix Live View signing salt.
+
 ## [1.3.0] - 2019-11-30
 ### Added
 - An owner field in the Todo schema which links a todo to a user.
