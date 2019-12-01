@@ -1,9 +1,9 @@
 defmodule MacroyWeb.TodoController do
   use MacroyWeb, :controller
+  import Phoenix.LiveView.Controller
 
-  def index(conn, params \\ %{}) do
+  def index(conn, _params) do
     todos = Macroy.list_todos(conn.assigns.current_user.id)
-    params = params |> Map.put(:todos, todos)
-    render(conn, "index.html", params)
+    live_render(conn, MacroyWeb.TodoLive, session: %{todos: todos})
   end
 end
