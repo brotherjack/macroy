@@ -15,7 +15,8 @@ config :macroy, MacroyWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "VnPtEPAJpgFi+Sx5d9lFSLLaJHpuocfYA6BBtsTHqUMT6xl4grqIfNjFj8RHJFzE",
   render_errors: [view: MacroyWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: MacroyWeb.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: MacroyWeb.PubSub, adapter: Phoenix.PubSub.PG2],
+  liveview: [signing_salt: System.get_env("secret_phxlview_key")]
 
 # Configures Elixir's Logger
 config :logger, :console,

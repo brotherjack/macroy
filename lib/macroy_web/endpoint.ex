@@ -1,6 +1,8 @@
 defmodule MacroyWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :macroy
 
+  socket "/live", Phoenix.LiveView.Socket
+
   socket "/socket", MacroyWeb.UserSocket,
     websocket: true,
     longpoll: false
