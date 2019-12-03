@@ -41,6 +41,7 @@ defmodule MacroyWeb.Router do
     scope "/todos" do
       pipe_through MacroyWeb.RequireLogin
       get "/", TodoController, :index
+      live "/", TodoLive
     end
   end
   # Other scopes may use custom stacks.

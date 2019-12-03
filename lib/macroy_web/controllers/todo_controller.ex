@@ -3,7 +3,9 @@ defmodule MacroyWeb.TodoController do
   import Phoenix.LiveView.Controller
 
   def index(conn, _params) do
-    todos = Macroy.list_todos(conn.assigns.current_user.id)
+    todos = conn.assigns.current_user.id
+    |> Macroy.list_todos()
+
     live_render(conn, MacroyWeb.TodoLive, session: %{todos: todos})
   end
 end
