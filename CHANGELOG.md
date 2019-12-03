@@ -6,6 +6,9 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- Added stipes to todos table.
+
 ## [1.3.1] - 2019-12-01
 ### Added
 - Installed Phoenix LiveView.
