@@ -56,6 +56,17 @@ defmodule Macroy.Todo do
     ]
   end
 
+  @doc """
+  Returns the name of all fields, except the ownership id, and their associated
+  type.
+  """
+
+  @spec get_todo_fields_with_types() :: [{name :: atom, type :: atom}]
+  def get_todo_fields_with_types() do
+    fields = get_todo_fields() -- [:owner_id]
+    for field <- fields, do: {field, __MODULE__.__schema__(:type, field)}
+  end
+
   def get_todo_fields_and_timestamps() do
     get_todo_fields() ++ [:updated_at, :inserted_at]
   end

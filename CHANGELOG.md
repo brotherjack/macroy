@@ -6,6 +6,10 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- A template for new todos.
+- Documentation for `Todo.get_todo_fields_with_types/0`.
+
 ## [1.3.2] - 2019-12-02
 ### Added
 - Todo rows in the index are now sortable by column.
