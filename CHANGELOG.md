@@ -10,6 +10,7 @@ and this project adheres to
 - A template for new todos.
 - Documentation for `Todo.get_todo_fields_with_types/0`.
 - Documentation for `Todo.get_todo_fields_and_timestamps/0`.
+- Documentation for `Todo.get_todo_fields/0`.
 
 ## [1.3.2] - 2019-12-02
 ### Added

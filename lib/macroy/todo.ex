@@ -48,6 +48,11 @@ defmodule Macroy.Todo do
     |> change(changes |> destruct_if_need_be |> Map.put(:updated_at, timestamp))
   end
 
+  @doc """
+  Returns the name of all fields, except for the insert and update timestamps.
+  """
+
+  @spec get_todo_fields() :: [name :: atom]
   def get_todo_fields() do
     [
       :name,  :is_done, :category, :subcategory,
