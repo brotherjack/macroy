@@ -67,6 +67,11 @@ defmodule Macroy.Todo do
     for field <- fields, do: {field, __MODULE__.__schema__(:type, field)}
   end
 
+  @doc """
+  Returns all fields from get_todo_fields/0 plus updated_at and inserted_at
+  """
+
+  @spec get_todo_fields_and_timestamps() :: [field :: atom]
   def get_todo_fields_and_timestamps() do
     get_todo_fields() ++ [:updated_at, :inserted_at]
   end
