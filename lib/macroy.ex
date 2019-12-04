@@ -3,6 +3,8 @@ defmodule Macroy do
   alias Doorman.Auth.Secret
   import Ecto.Query
 
+  def new_todo, do: Todo.changeset(%Todo{})
+
   def list_todos(id) do
     query = from(t in Todo,
       join: u in assoc(t, :owner),
