@@ -6,7 +6,7 @@ defmodule MacroyWeb.TodoController do
   def index(conn, _params) do
     todos = conn.assigns.current_user.id
     |> Macroy.list_todos()
-    
+
     live_render(conn, MacroyWeb.TodoLive, session: %{todos: todos})
   end
 

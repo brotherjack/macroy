@@ -7,6 +7,7 @@ and this project adheres to
 
 ## [Unreleased]
 ### Added
+- Todo controller API for create/2, show/2, and new/2.
 - `Macroy.get_todo/1`. 
 - `Macroy.insert_todo/1`.
 - A template for new todos.
