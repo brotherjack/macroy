@@ -24,9 +24,7 @@ defmodule MacroyWeb.OrgFileController do
 
     case inserted_orgfile do
       {:ok, orgfile} -> redirect(conn, to: Routes.org_file_path(conn, :show, orgfile))
-      {:error, orgfile} ->
-        IO.inspect(orgfile)
-        render(conn, "new.html", orgfile: orgfile)
+      {:error, orgfile} -> render(conn, "new.html", orgfile: orgfile)
     end
   end
 
