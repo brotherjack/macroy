@@ -3,6 +3,8 @@ defmodule Macroy do
   alias Doorman.Auth.Secret
   import Ecto.Query
 
+  def get_todo(id), do: Repo.get(Todo, id)
+
   def new_todo, do: Todo.changeset(%Todo{})
 
   def list_todos(id) do
@@ -13,6 +15,12 @@ defmodule Macroy do
       preload: [owner: u, org_file: o]
     )
     Repo.all(query)
+  end
+
+  def insert_todo(attrs) do
+    %Todo{}
+    |> Todo.changeset(attrs)
+    |> Repo.insert()
   end
 
   def list_org_files(id) do

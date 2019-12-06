@@ -7,6 +7,8 @@ and this project adheres to
 
 ## [Unreleased]
 ### Added
+- `Macroy.get_todo/1`. 
+- `Macroy.insert_todo/1`.
 - A template for new todos.
 - Documentation for `Todo.get_todo_fields_with_types/0`.
 - Documentation for `Todo.get_todo_fields_and_timestamps/0`.
