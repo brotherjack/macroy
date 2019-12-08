@@ -50,7 +50,13 @@ defmodule MacroyWeb.Live.TodoNew do
 
   defp setup_initial_params() do
     %{
-      todo: Macroy.new_todo(),
+      todo: Macroy.new_todo(
+        %{
+          deadline_on: DateTime.utc_now,
+          scheduled_for: DateTime.utc_now,
+          closed_on: nil
+        }
+      ),
       todo_fields: Todo.get_todo_fields_with_types(),
       csrf_token: Phoenix.Controller.get_csrf_token(),
       closed_on: false,

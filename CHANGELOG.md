@@ -10,6 +10,7 @@ and this project adheres to
 - Todo controller API for create/2, show/2, and new/2.
 - `Macroy.get_todo/1`. 
 - `Macroy.insert_todo/1`.
+- `Macroy.new_todo/1` to allow for datetimes to be set in advance.
 - A template for new todos.
 - Documentation for `Todo.get_todo_fields_with_types/0`.
 - Documentation for `Todo.get_todo_fields_and_timestamps/0`.
@@ -20,6 +21,7 @@ and this project adheres to
 - Index and new for todo were converted into Live Views.
 - Todo index column headers are now sortable.
 - Datetime fields on new todo can now be toggled.
+- Datetime fields now start at today, and nil for closed_on, by default.
 
 ## [1.3.2] - 2019-12-02
 ### Added

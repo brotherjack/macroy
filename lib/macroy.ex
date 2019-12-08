@@ -7,6 +7,8 @@ defmodule Macroy do
 
   def new_todo, do: Todo.changeset(%Todo{})
 
+  def new_todo(params), do: Todo.changeset(%Todo{}, params)
+
   def list_todos(id) do
     query = from(t in Todo,
       join: u in assoc(t, :owner),
