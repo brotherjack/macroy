@@ -2,17 +2,23 @@ defmodule MacroyWeb.TodoController do
   use MacroyWeb, :controller
   import Phoenix.LiveView.Controller
   alias Macroy.Todo
+  alias MacroyWeb.Live.{TodoIndex, TodoNew}
 
   def index(conn, _params) do
     todos = conn.assigns.current_user.id
     |> Macroy.list_todos()
 
-    live_render(conn, MacroyWeb.TodoLive, session: %{todos: todos})
+    live_render(conn, TodoIndex, session: %{todos: todos})
   end
 
   def new(conn, _params) do
     todo_f = Todo.get_todo_fields_with_types()
-    render(conn, "new.html", todo: Macroy.new_todo(), todo_fields: todo_f)
+    live_render(conn, TodoNew, session: %{
+          todo: Macroy.new_todo(),
+          todo_fields: todo_f,
+          csrf_token: get_csrf_token()
+      }
+    )
   end
 
   def create(conn, %{"todo" => todo_params}) do

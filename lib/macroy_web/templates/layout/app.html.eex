@@ -43,6 +43,9 @@
                     Todos
                 </a>
                 <div class="navbar-dropdown">
+                    <a href="<%= Routes.live_path(@conn, MacroyWeb.Live.TodoNew)%>" class="navbar-item">
+                        New
+                    </a>
                     <a href="<%= Routes.todo_path(@conn, :index)%>" class="navbar-item">
                         Index
                     </a>

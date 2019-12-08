@@ -1,0 +1,48 @@
+<section class="section box">
+    <h2 class="title is-3"><%= gettext "Add %{name} TODO", name: "Macroy" %></h2>
+    <%= form_for @todo, "/todos/create", [csrf_token: @csrf_token], fn form -> %>
+        <%= if @todo.action do %>
+            <div class="alert alert-danger">
+                There are errors in your submission. Please correct them below.
+            </div>
+        <% end %>
+        <div class="field">
+            <%= for {field_name, field_type} <- @todo_fields do %>
+                <div class="control">
+                    <%= case {field_name, field_type} do %>
+                        <% {_, :string} -> %>
+                            <%= label form, field_name %>
+                            <%= text_input form, field_name, class: "input" %>
+                            <%= error_tag form, field_name %>
+                        <% {:is_done, :boolean} -> %>
+                            <%= label form, field_name %>
+                            <%= select form, field_name, ["DONE": :DONE, "TODO": :TODO], class: "input" %>
+                            <% error_tag form, field_name %>
+                        <% {:closed_on, :utc_datetime} -> %>
+                            <%= label form, field_name %>
+                            <%= unless @closed_on do %>
+                                <%= datetime_select form, field_name, class: "input" %>
+                                <%= error_tag form, field_name %>
+                            <% end %>
+                            
+                              <%= live_link "Toggle Closed", to: Routes.live_path(@socket, TodoNew, closed_on: :click), class: "button is-link" %> 
+                            
+                        <% {:scheduled_for, :utc_datetime} -> %>
+                          <%= label form, field_name %>
+                          <%= datetime_select form, field_name, class: "input" %>
+                          <%= error_tag form, field_name %>
+                        <% {:deadline_on, :utc_datetime} -> %>
+                            <%= label form, field_name %>
+                            <%= datetime_select form, field_name, class: "input" %>
+                            <%= error_tag form, field_name %>
+                        <% {:org_file_id, :id} -> %>
+                            <span></span>
+                        <% end %>
+                </div>
+            <% end %>
+        </div>
+        <div class="control">
+            <button class="button is-link" type="Submit">Submit</button>
+        </div>
+    <% end %>
+</section>

@@ -1,5 +1,4 @@
-
-defmodule MacroyWeb.TodoLive do
+defmodule MacroyWeb.Live.TodoIndex do
   use Phoenix.LiveView
   alias MacroyWeb.TodoView
   alias Macroy.Todo
@@ -12,13 +11,17 @@ defmodule MacroyWeb.TodoLive do
 
   def render(assigns), do: TodoView.render("index.html", assigns)
 
+  def setup_initial_todo_sort() do
+    for field <- Todo.get_todo_fields() -- [:owner_id] do
+      {field, ""}
+    end
+  end
+
   def handle_event("sort_by_column", %{"column" => col}, socket) do
     with todo_sorts <- socket.assigns.todo_sorts,
          todos <- socket.assigns.todos,
            col <- String.to_atom(col) do
-      Logger.debug("todo_sorts: #{inspect(todo_sorts)}.")
-      Logger.debug("col: #{col}.")
-      
+
       case Keyword.get(todo_sorts, col) do
         "ASC" ->
           Logger.debug("Was ASC, becoming DSC")
@@ -39,12 +42,6 @@ defmodule MacroyWeb.TodoLive do
           |> Enum.sort(fn(t1, t2) -> Map.get(t1, col) <= Map.get(t2, col) end)
           {:noreply, assign(socket, todos: todos, todo_sorts: sorts)}
       end
-    end
-  end
-
-  def setup_initial_todo_sort() do
-    for field <- Todo.get_todo_fields() -- [:owner_id] do
-      {field, ""}
     end
   end
 end

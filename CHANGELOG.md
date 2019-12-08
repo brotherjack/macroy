@@ -14,6 +14,12 @@ and this project adheres to
 - Documentation for `Todo.get_todo_fields_with_types/0`.
 - Documentation for `Todo.get_todo_fields_and_timestamps/0`.
 - Documentation for `Todo.get_todo_fields/0`.
+- A CSRF token for Todo new form.
+
+### Changed
+- Index and new for todo were converted into Live Views.
+- Todo index column headers are now sortable.
+- Closed on date can now be toggled.
 
 ## [1.3.2] - 2019-12-02
 ### Added
