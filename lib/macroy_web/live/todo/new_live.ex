@@ -25,6 +25,9 @@ defmodule MacroyWeb.Live.TodoNew do
       String.contains?(uri, "closed_on=click") ->
         socket = toggle_datetime(socket, :closed_on)
         {:noreply,assign(socket, closed_on: not socket.assigns.closed_on)}
+      String.contains?(uri, "scheduled_for=click") ->
+        socket = toggle_datetime(socket, :scheduled_for)
+        {:noreply ,assign(socket, scheduled_for: not socket.assigns.scheduled_for)}
       true ->
         {:noreply, socket}
     end
