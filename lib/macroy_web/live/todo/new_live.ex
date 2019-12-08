@@ -38,6 +38,7 @@ defmodule MacroyWeb.Live.TodoNew do
     else
       todo = socket.assigns.todo |> change([{param, DateTime.utc_now}])
       assign(socket, todo: todo)
+      
     end
   end
 
@@ -47,8 +48,8 @@ defmodule MacroyWeb.Live.TodoNew do
       todo_fields: Todo.get_todo_fields_with_types(),
       csrf_token: Phoenix.Controller.get_csrf_token(),
       closed_on: false,
-      scheduled_for: false,
-      deadline_on: false
+      scheduled_for: true,
+      deadline_on: true
     }
   end
 end

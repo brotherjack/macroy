@@ -20,7 +20,7 @@
                             <% error_tag form, field_name %>
                         <% {:closed_on, :utc_datetime} -> %>
                             <%= label form, field_name %>
-                            <%= unless @closed_on do %>
+                            <%= if @closed_on do %>
                                 <%= datetime_select form, field_name, class: "input" %>
                                 <%= error_tag form, field_name %>
                             <% end %>
