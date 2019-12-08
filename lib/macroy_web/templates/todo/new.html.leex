@@ -34,10 +34,13 @@
                             <%= error_tag form, field_name %>
                           <% end %>
                           <%= live_link "Toggle Scheduled", to: Routes.live_path(@socket, TodoNew, scheduled_for: :click), class: "button is-link" %>
-                        <% {:deadline_on, :utc_datetime} -> %>
+                          <% {:deadline_on, :utc_datetime} -> %>
                             <%= label form, field_name %>
-                            <%= datetime_select form, field_name, class: "input" %>
-                            <%= error_tag form, field_name %>
+                            <%= if @deadline_on do %>
+                              <%= datetime_select form, field_name, class: "input" %>
+                              <%= error_tag form, field_name %>
+                            <% end %>
+                            <%= live_link "Toggle Deadline", to: Routes.live_path(@socket, TodoNew, deadline_on: :click), class: "button is-link" %>
                         <% {:org_file_id, :id} -> %>
                             <span></span>
                         <% end %>

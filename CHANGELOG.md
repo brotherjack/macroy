@@ -19,7 +19,7 @@ and this project adheres to
 ### Changed
 - Index and new for todo were converted into Live Views.
 - Todo index column headers are now sortable.
-- Closed on date can now be toggled.
+- Datetime fields on new todo can now be toggled.
 
 ## [1.3.2] - 2019-12-02
 ### Added
