@@ -1,27 +1,39 @@
 defmodule MacroyWeb.Live.TodoNew do
   use Phoenix.LiveView
   alias MacroyWeb.TodoView
-  alias Macroy.Todo #TODO: Place in macroy.ex
   import Ecto.Changeset
+  require Logger
+  alias MacroyWeb.Router.Helpers, as: Routes
 
-  @necessary_fields [
-    :todo, :todo_fields, :csrf_token, :closed_on, :scheduled_for, :deadline_on
-  ]
-
-  def mount(_session, socket) do
-    {:ok, assign(socket, setup_initial_params())}
+  def mount(%{user_id: user_id}, socket) do
+    {:ok, setup_initial_params(socket, user_id)}
   end
 
   def render(assigns), do: TodoView.render("new.html", assigns)
 
-  def handle_event("set_closed", _, socket) do
-    {:noreply, assign(socket, closed_on: not socket.assigns.closed_on)}
+  def handle_event("validate", %{"todo" => todo_params}, socket) do
+    todo_params = Enum.map(todo_params, fn {k,v} -> {String.to_atom(k), v} end)
+    changeset = Macroy.update_todo(socket.assigns.todo, todo_params) 
+      
+    {:noreply, assign(socket, todo: changeset)}
   end
 
-  def handle_params(_params, uri, socket) do
+  def handle_event("insert_todo", %{"todo" => todo_params}, socket) do
+    IO.inspect todo_params
+    inserted_todo = todo_params
+    |> Macroy.insert_todo(socket.assigns.user_id)
+    |> IO.inspect
+
+    case inserted_todo do
+      {:ok, todo} ->
+        {:stop, redirect(socket, to: Routes.todo_path(socket, :show, todo))}
+      {:error, todo} -> {:noreply, assign(socket, todo: todo)} 
+    end
+  end
+
+  def handle_params(params, uri, socket) do
+    IO.inspect params
     cond do
-      not Enum.all?(@necessary_fields, fn a -> a in Map.keys(socket.assigns) end) -> 
-        {:noreply, assign(socket, setup_initial_params())}
       String.contains?(uri, "closed_on=click") ->
         socket = toggle_datetime(socket, :closed_on)
         {:noreply, assign(socket, closed_on: not socket.assigns.closed_on)}
@@ -44,24 +56,21 @@ defmodule MacroyWeb.Live.TodoNew do
     else
       todo = socket.assigns.todo |> change([{param, DateTime.utc_now}])
       assign(socket, todo: todo)
-      
     end
   end
 
-  defp setup_initial_params() do
-    %{
-      todo: Macroy.new_todo(
-        %{
+  defp setup_initial_params(socket, id) do
+    new_todo_params = %{
           deadline_on: DateTime.utc_now,
           scheduled_for: DateTime.utc_now,
           closed_on: nil
-        }
-      ),
-      todo_fields: Todo.get_todo_fields_with_types(),
-      csrf_token: Phoenix.Controller.get_csrf_token(),
-      closed_on: false,
-      scheduled_for: true,
-      deadline_on: true
     }
+    socket
+    |> assign_new(:todo, fn -> Macroy.new_todo(new_todo_params) end) 
+    |> assign_new(:closed_on, fn -> false end)
+    |> assign_new(:scheduled_for, fn -> true end)
+    |> assign_new(:deadline_on, fn -> true end)
+    |> assign_new(:user_id, fn -> Macroy.get_user(id)  end)
+    |> assign_new(:flash, fn -> nil end)
   end
 end

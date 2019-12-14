@@ -38,7 +38,6 @@ defmodule Macroy.Todo do
     |> foreign_key_constraint(:org_file_id, name: "todos_org_file_id_fkey")
     |> foreign_key_constraint(:owner_id, name: "todos_user_id_fkey")
     |> validate_required([:name, :is_done])
-    |> validate_subset(:is_done, [:DONE, :TODO])
   end
 
   def update(todo, changes \\ %{}) do

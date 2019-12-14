@@ -6,6 +6,8 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.4.0] - 2019-12-14
 ### Added
 - Todo controller API for create/2, show/2, and new/2.
 - `Macroy.get_todo/1`. 
@@ -16,12 +18,18 @@ and this project adheres to
 - Documentation for `Todo.get_todo_fields_and_timestamps/0`.
 - Documentation for `Todo.get_todo_fields/0`.
 - A CSRF token for Todo new form.
+- `Macroy.update_todo/2` to change todo and provide for realtime validation.
+- New todo form now provides realtime validation.
+- `Macroy.get_user/1`.
+- A show page for individual todos.
 
 ### Changed
 - Index and new for todo were converted into Live Views.
 - Todo index column headers are now sortable.
 - Datetime fields on new todo can now be toggled.
 - Datetime fields now start at today, and nil for closed_on, by default.
+- Added joins and preloads so that `Macroy.get_todo/1` can display user and 
+  orgfiles.
 
 ## [1.3.2] - 2019-12-02
 ### Added

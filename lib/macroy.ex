@@ -1,13 +1,26 @@
 defmodule Macroy do
   alias Macroy.{Repo, OrgFile, User, Todo}
   alias Doorman.Auth.Secret
-  import Ecto.Query
+  import Ecto.{Query, Changeset}
 
-  def get_todo(id), do: Repo.get(Todo, id)
+  def get_todo(id) do
+    query = from(t in Todo,
+      join: u in assoc(t, :owner),
+      left_join: o in assoc(t, :org_file),
+      where: t.id == ^id,
+      preload: [owner: u, org_file: o]
+    )
+    Repo.one(query)
+  end
 
   def new_todo, do: Todo.changeset(%Todo{})
 
   def new_todo(params), do: Todo.changeset(%Todo{}, params)
+
+  def update_todo(todo, params) do
+    todo
+    |> change(params)
+  end
 
   def list_todos(id) do
     query = from(t in Todo,
@@ -19,9 +32,12 @@ defmodule Macroy do
     Repo.all(query)
   end
 
-  def insert_todo(attrs) do
+  def get_todo_fields_with_types(), do: Todo.get_todo_fields_with_types()
+
+  def insert_todo(attrs, owner_id) do
     %Todo{}
     |> Todo.changeset(attrs)
+    |> put_assoc(:owner, owner_id)
     |> Repo.insert()
   end
 
@@ -37,6 +53,8 @@ defmodule Macroy do
   def new_org_file, do: OrgFile.changeset(%OrgFile{})
 
   def get_org_file(id), do: Repo.get(OrgFile, id)
+
+  def get_user(id), do: Repo.get(User, id)
 
   def insert_org_file(attrs) do
     %OrgFile{}

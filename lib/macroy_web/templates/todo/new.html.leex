@@ -1,51 +1,64 @@
 <section class="section box">
-    <h2 class="title is-3"><%= gettext "Add %{name} TODO", name: "Macroy" %></h2>
-    <%= form_for @todo, "/todos/create", [csrf_token: @csrf_token], fn form -> %>
-        <%= if @todo.action do %>
-            <div class="alert alert-danger">
-                There are errors in your submission. Please correct them below.
-            </div>
+  <h2 class="title is-3">
+    <%= gettext("Add %{name} TODO", name: "Macroy") %>
+  </h2>
+    <%= form_for @todo, "#", [phx_change: "validate", phx_submit: "insert_todo"], fn form -> %>
+        <%= unless is_nil(@flash) do %>
+            <%= with {tag, msg} <- @flash do %>
+                <div class="notification is-<%= Atom.to_string(tag)  %>">
+                    <%= if is_nil(msg) do %>
+                        msg
+                    <% else %>
+                        There are errors in your submission. Please correct them below.
+                    <% end %>
+              </div>
+            <% end %>
         <% end %>
         <div class="field">
-            <%= for {field_name, field_type} <- @todo_fields do %>
-                <div class="control">
-                    <%= case {field_name, field_type} do %>
-                        <% {_, :string} -> %>
-                            <%= label form, field_name %>
-                            <%= text_input form, field_name, class: "input" %>
-                            <%= error_tag form, field_name %>
-                        <% {:is_done, :boolean} -> %>
-                            <%= label form, field_name %>
-                            <%= select form, field_name, ["DONE": :DONE, "TODO": :TODO], class: "input" %>
-                            <% error_tag form, field_name %>
-                        <% {:closed_on, :utc_datetime} -> %>
-                            <%= label form, field_name %>
-                            <%= if @closed_on do %>
-                                <%= datetime_select form, field_name, class: "input" %>
-                                <%= error_tag form, field_name %>
-                            <% end %>
-
-                              <%= live_link "Toggle Closed", to: Routes.live_path(@socket, TodoNew, closed_on: :click), class: "button is-link" %>
-
-                        <% {:scheduled_for, :utc_datetime} -> %>
-                          <%= label form, field_name %>
-                          <%= if @scheduled_for do %>
-                            <%= datetime_select form, field_name, class: "input" %>
-                            <%= error_tag form, field_name %>
-                          <% end %>
-                          <%= live_link "Toggle Scheduled", to: Routes.live_path(@socket, TodoNew, scheduled_for: :click), class: "button is-link" %>
-                          <% {:deadline_on, :utc_datetime} -> %>
-                            <%= label form, field_name %>
-                            <%= if @deadline_on do %>
-                              <%= datetime_select form, field_name, class: "input" %>
-                              <%= error_tag form, field_name %>
-                            <% end %>
-                            <%= live_link "Toggle Deadline", to: Routes.live_path(@socket, TodoNew, deadline_on: :click), class: "button is-link" %>
-                        <% {:org_file_id, :id} -> %>
-                            <span></span>
-                        <% end %>
-                </div>
-            <% end %>
+            <div class="control">
+                <%= label form, :name %>
+                <%= text_input form, :name, class: "input" %>
+                <%= error_tag form, :name %>
+            </div>
+            <div class="control">
+                <%= label form, :is_done %>
+                <%= select form, :is_done, ["DONE": true, "TODO": false], class: "input" %>
+                <% error_tag form, :is_done %>
+            </div>
+            <div class="control">
+                <%= label form, :category %>
+                <%= text_input form, :category, class: "input" %>
+                <%= error_tag form, :category %>
+            </div>
+            <div class="control">
+                <%= label form, :subcategory %>
+                <%= text_input form, :subcategory, class: "input" %>
+                <%= error_tag form, :subcategory %>
+            </div>
+            <div class="control">
+                <%= label form, :closed_on %>
+                <%= if @closed_on do %>
+                    <%= datetime_select form, :closed_on, class: "input" %>
+                    <%= error_tag form, :closed_on %>
+                <% end %>
+                <%= live_link "Toggle Closed", to: Routes.live_path(@socket, TodoNew, closed_on: :click), class: "button is-link" %>
+            </div>
+            <div class="control">
+                <%= label form, :scheduled_for %>
+                <%= if @scheduled_for do %>
+                  <%= datetime_select form, :scheduled_for, class: "input" %>
+                  <%= error_tag form, :scheduled_for %>
+                <% end %>
+                <%= live_link "Toggle Scheduled", to: Routes.live_path(@socket, TodoNew, scheduled_for: :click), class: "button is-link" %>
+            </div>
+            <div class="control">
+                <%= label form, :deadline_on %>
+                <%= if @deadline_on do %>
+                  <%= datetime_select form, :deadline_on, class: "input" %>
+                  <%= error_tag form, :deadline_on %>
+                <% end %>
+                <%= live_link "Toggle Deadline", to: Routes.live_path(@socket, TodoNew, deadline_on: :click), class: "button is-link" %>
+            </div>
         </div>
         <div class="control">
             <button class="button is-link" type="Submit">Submit</button>

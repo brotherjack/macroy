@@ -4,7 +4,7 @@ defmodule Macroy.MixProject do
   def project do
     [
       app: :macroy,
-      version: "1.0.0",
+      version: "1.4.0",
       elixir: "~> 1.5",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
@@ -52,7 +52,7 @@ defmodule Macroy.MixProject do
       {:propcheck, "~> 1.1", only: [:test, :dev]},
 
       # Phoenix Live View
-      {:phoenix_live_view, "~> 0.4.0"},
+      {:phoenix_live_view, git: "https://github.com/phoenixframework/phoenix_live_view.git", refs: "08bf17184ec6bbc7020b5dfa01a79befdc506f85"},
       {:floki, ">= 0.0.0", only: :test}
     ]
   end
