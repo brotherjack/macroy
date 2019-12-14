@@ -6,6 +6,8 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- The broken links in this change log in the last two releases.
 
 ## [1.4.1] - 2019-12-14
 ### Fixed
@@ -184,7 +186,7 @@ work, and can be closed.
 - Link from OrgFile index to home.
 - Link from home to OrgFile index.
 
-[Unreleased]: https://github.com/brotherjack/macroy/compare/v1.3.2...HEAD
+[Unreleased]: https://github.com/brotherjack/macroy/compare/v1.4.1...HEAD
 [0.0.1]: https://github.com/brotherjack/macroy/releases/tag/v0.0.1
 [0.0.2]: https://github.com/brotherjack/macroy/compare/v0.0.1...v0.0.2
 [0.1.0]: https://github.com/brotherjack/macroy/compare/v0.0.2...v0.1.0
@@ -197,4 +199,5 @@ work, and can be closed.
 [1.3.0]: https://github.com/brotherjack/macroy/compare/v1.2.3...v1.3.0
 [1.3.1]: https://github.com/brotherjack/macroy/compare/v1.3.0...v1.3.1
 [1.3.2]: https://github.com/brotherjack/macroy/compare/v1.3.1...v1.3.2
-
+[1.4.0]: https://github.com/brotherjack/macroy/compare/v1.3.2...v1.4.0
+[1.4.1]: https://github.com/brotherjack/macroy/compare/v1.4.0...v1.4.1
