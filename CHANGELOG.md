@@ -7,6 +7,10 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [1.4.1] - 2019-12-14
+### Fixed
+- Patched a security vulnerability with a javascript library.
+
 ## [1.4.0] - 2019-12-14
 ### Added
 - Todo controller API for create/2, show/2, and new/2.
