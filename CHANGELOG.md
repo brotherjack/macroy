@@ -6,6 +6,9 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- `Macroy.delete_todo/1`.
+
 ### Fixed
 - The broken links in this change log in the last two releases.
 

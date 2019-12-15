@@ -3,6 +3,14 @@ defmodule Macroy do
   alias Doorman.Auth.Secret
   import Ecto.{Query, Changeset}
 
+  def delete_todo(id) do
+    todo = Repo.get!(Todo, id)
+    case Repo.delete(todo) do
+      {:ok, todo} -> {:ok, "Todo with id #{todo.id} has been deleted"}
+      {:error, todo} -> {:error, todo}
+    end
+  end
+
   def get_todo(id) do
     query = from(t in Todo,
       join: u in assoc(t, :owner),
