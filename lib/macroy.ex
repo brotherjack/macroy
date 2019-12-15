@@ -18,7 +18,7 @@ defmodule Macroy do
       where: t.id == ^id,
       preload: [owner: u, org_file: o]
     )
-    Repo.one(query)
+    query |> Repo.one()
   end
 
   def new_todo, do: Todo.changeset(%Todo{})

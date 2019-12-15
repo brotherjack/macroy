@@ -19,6 +19,7 @@
   "devDependencies": {
     "@babel/core": "^7.6.2",
     "@babel/preset-env": "^7.6.2",
+    "@fortawesome/fontawesome-free": "^5.12.0",
     "babel-loader": "^8.0.0",
     "bulma": "^0.7.5",
     "copy-webpack-plugin": "^4.5.0",

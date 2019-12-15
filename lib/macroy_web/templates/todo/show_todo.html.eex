@@ -1,0 +1,18 @@
+<h3 class="title is-3"><%= @todo.name %></h3>
+
+<ul>
+    <li><strong><%= if @todo.is_done, do: "DONE", else: "TODO" %></strong></li>
+    <li><strong>Category:</strong> <%= @todo.category %></li>
+    <li><strong>Subcategory:</strong> <%= @todo.subcategory %></li>
+    <li><strong>Closed On:</strong> <%= @todo.closed_on %></li>
+    <li><strong>Scheduled For:</strong> <%= @todo.scheduled_for %></li>
+    <li><strong>Deadline On:</strong> <%= @todo.deadline_on %></li>
+    <li><strong>OrgFile:</strong> <%= @todo.org_file.filename %></li>
+
+    <li><button
+            onclick="location.href='#'"
+            type="button"
+            class="button is-link"
+        >Edit</button>
+    </li>
+</ul>

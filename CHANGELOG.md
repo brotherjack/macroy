@@ -8,6 +8,11 @@ and this project adheres to
 ## [Unreleased]
 ### Added
 - `Macroy.delete_todo/1`.
+- Font awesome 5.
+
+### Changed
+- Split up show todo template to allow for a modal card on todo delete with less
+  code duplication.
 
 ### Fixed
 - The broken links in this change log in the last two releases.

@@ -26,6 +26,7 @@
           <th>
             <a href='#' phx-click="sort_by_column" phx-value-column="org_file">OrgFile</a>
           </th>
+          <th></th>
         </tr>
     </thead>
     <tbody>
@@ -39,6 +40,7 @@
                 <td><%= todo.scheduled_for %></td>
                 <td><%= todo.deadline_on %></td>
                 <td><%= if todo.org_file, do: todo.org_file.filename, else: "" %></td>
+                <td><i class="fas fa-trash-alt"</td>
             </tr>
         <% end %>
     </tbody>

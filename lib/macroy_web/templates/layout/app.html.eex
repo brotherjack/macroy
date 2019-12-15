@@ -5,8 +5,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <%= csrf_meta_tag() %>
-    <title>Macroy</title>
-    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+        <title>Macroy</title>
+        <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+        <script src="https://kit.fontawesome.com/15bf290da4.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <header>
