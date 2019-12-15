@@ -6,6 +6,7 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [1.4.2] - 2019-12-15
 ### Added
 - `Macroy.delete_todo/1`.
 - Font awesome 5.
@@ -16,6 +17,8 @@ and this project adheres to
 
 ### Fixed
 - The broken links in this change log in the last two releases.
+- Todo show no longer crashes when trying to load a todo file without an 
+  associated org file.
 
 ## [1.4.1] - 2019-12-14
 ### Fixed
@@ -194,7 +197,7 @@ work, and can be closed.
 - Link from OrgFile index to home.
 - Link from home to OrgFile index.
 
-[Unreleased]: https://github.com/brotherjack/macroy/compare/v1.4.1...HEAD
+[Unreleased]: https://github.com/brotherjack/macroy/compare/v1.4.2...HEAD
 [0.0.1]: https://github.com/brotherjack/macroy/releases/tag/v0.0.1
 [0.0.2]: https://github.com/brotherjack/macroy/compare/v0.0.1...v0.0.2
 [0.1.0]: https://github.com/brotherjack/macroy/compare/v0.0.2...v0.1.0
@@ -209,3 +212,4 @@ work, and can be closed.
 [1.3.2]: https://github.com/brotherjack/macroy/compare/v1.3.1...v1.3.2
 [1.4.0]: https://github.com/brotherjack/macroy/compare/v1.3.2...v1.4.0
 [1.4.1]: https://github.com/brotherjack/macroy/compare/v1.4.0...v1.4.1
+[1.4.2]: https://github.com/brotherjack/macroy/compare/v1.4.1...v1.4.2

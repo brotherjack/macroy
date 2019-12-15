@@ -7,8 +7,9 @@
     <li><strong>Closed On:</strong> <%= @todo.closed_on %></li>
     <li><strong>Scheduled For:</strong> <%= @todo.scheduled_for %></li>
     <li><strong>Deadline On:</strong> <%= @todo.deadline_on %></li>
-    <li><strong>OrgFile:</strong> <%= @todo.org_file.filename %></li>
-
+    <%= unless is_nil @todo.org_file do %>
+      <li><strong>OrgFile:</strong> <%= @todo.org_file.filename %></li>
+    <% end %>
     <li><button
             onclick="location.href='#'"
             type="button"
