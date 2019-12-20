@@ -1,5 +1,10 @@
 <%= unless is_nil @todo do %>
-  <%= render("show_todo.html", todo: @todo) %>
+    <%= render("show_todo.html", todo: @todo) %>
+    <button
+      onclick="location.href='#'"
+      type="button"
+      class="button is-link"
+    >Edit</button>
 <% end %>
 
 <%= if is_nil @todo do %>

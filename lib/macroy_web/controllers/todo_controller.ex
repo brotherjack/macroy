@@ -4,12 +4,8 @@ defmodule MacroyWeb.TodoController do
   alias Macroy.Todo
   alias MacroyWeb.Live.{TodoIndex, TodoNew}
 
-  def index(conn, _params) do
-    todos = conn.assigns.current_user.id
-    |> Macroy.list_todos()
-
-    live_render(conn, TodoIndex, session: %{todos: todos})
-  end
+  def index(conn, _params), do:
+    live_render(conn, TodoIndex, session: %{uid: conn.assigns.current_user.id})
 
   def setup(conn, _params) do
     todo_f = Todo.get_todo_fields_with_types()

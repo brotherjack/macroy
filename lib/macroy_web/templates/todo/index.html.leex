@@ -1,5 +1,36 @@
 <h3 class="title is-3">Todos</h3>
+
+<%= unless is_nil(@todo) do %>
+  <div class="modal is-active">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Really delete #TODO: <%= @todo.name %>?</p>
+        <button class="delete" aria-label="close" phx-click="do_not_delete_todo"></button>
+      </header>
+      <section class="modal-card-body">
+        <%= render("show_todo.html", todo: @todo) %>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-danger"
+              phx-click="definitely_delete_todo"
+              phx-value-todo="<%= @todo.id %>">
+          Delete
+        </button>
+      </footer>
+    </div>
+  </div>
+  <% end %>
+
 <table class="table is-striped">
+  <%= unless is_nil(@flash) do %>
+    <%= with {tag, msg} <- @flash do %>
+        <div class="notification is-<%= Atom.to_string(tag)  %>">
+          <button class="delete" phx-click="kill_me"></button>
+            <%= msg %>
+        </div>
+    <% end %>
+  <% end %>
     <thead>
         <tr>
           <th>
@@ -40,8 +71,13 @@
                 <td><%= todo.scheduled_for %></td>
                 <td><%= todo.deadline_on %></td>
                 <td><%= if todo.org_file, do: todo.org_file.filename, else: "" %></td>
-                <td><i class="fas fa-trash-alt"</td>
+                <td>
+                  <a href="#" phx-click="maybe_delete_todo" phx-value-todo="<%= todo.id %>">
+                    <i class="fas fa-trash-alt"></i>
+                  </a>
+                </td>
             </tr>
         <% end %>
     </tbody>
 </table>
+

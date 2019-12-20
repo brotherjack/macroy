@@ -5,8 +5,8 @@ defmodule MacroyWeb.Live.TodoIndex do
 
   require Logger
 
-  def mount(%{todos: todos}, socket) do
-    {:ok, assign(socket, todos: todos, todo_sorts: setup_initial_todo_sort())}
+  def mount(%{uid: userid}, socket) do
+    {:ok, setup_assigns(userid, socket)}
   end
 
   def render(assigns), do: TodoView.render("index.html", assigns)
@@ -15,6 +15,16 @@ defmodule MacroyWeb.Live.TodoIndex do
     for field <- Todo.get_todo_fields() -- [:owner_id] do
       {field, ""}
     end
+  end
+
+  defp setup_assigns(user_id, socket) do
+    assign(socket,
+      user_id: user_id,
+      todos: Macroy.list_todos(user_id),
+      todo_sorts: setup_initial_todo_sort(),
+      todo: nil,
+      flash: nil
+    )
   end
 
   def handle_event("sort_by_column", %{"column" => col}, socket) do
@@ -43,5 +53,33 @@ defmodule MacroyWeb.Live.TodoIndex do
           {:noreply, assign(socket, todos: todos, todo_sorts: sorts)}
       end
     end
+  end
+
+  def handle_event("maybe_delete_todo", %{"todo" => id}, socket) do
+    todo = id |> Macroy.get_todo()
+    {:noreply, assign(socket, todo: todo)}
+  end
+
+  def handle_event("definitely_delete_todo", %{"todo" => id}, socket) do
+    case Macroy.delete_todo(id) do
+      {:ok, msg} ->
+        {:noreply,
+         assign(socket,
+            flash: {:success, msg},
+            todo: nil,
+            todos: Macroy.list_todos(socket.assigns.user_id))
+        }
+      {:error, todo} ->
+        msg = "Could not delete #{todo.name}!"
+        {:noreply, assign(socket, flash: {:danger, msg}, todo: nil)}
+    end
+  end
+
+  def handle_event("do_not_delete_todo", _params, socket) do
+    {:noreply, assign(socket, todo: nil)}
+  end
+
+  def handle_event("kill_me", _, socket) do
+    {:noreply, assign(socket, flash: nil)}
   end
 end

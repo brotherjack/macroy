@@ -10,10 +10,4 @@
     <%= unless is_nil @todo.org_file do %>
       <li><strong>OrgFile:</strong> <%= @todo.org_file.filename %></li>
     <% end %>
-    <li><button
-            onclick="location.href='#'"
-            type="button"
-            class="button is-link"
-        >Edit</button>
-    </li>
 </ul>
