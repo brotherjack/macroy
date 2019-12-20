@@ -9,6 +9,9 @@ and this project adheres to
 ### Added
 - Can now actually delete todos.
 
+### Removed
+- Depressing failure message on the front page.
+
 ## [1.4.2] - 2019-12-15
 ### Added
 - `Macroy.delete_todo/1`.
