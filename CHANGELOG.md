@@ -12,6 +12,10 @@ and this project adheres to
 - Added sobelow to check for security errors. This can be done by running 
   `mix sobelow`.
 
+### Fixes
+- Issue #2, where a todo with a name over 32 caharacters would cut off the 
+  cancel button on the deletion modal.
+
 ### Removed
 - Depressing failure message on the front page.
 
