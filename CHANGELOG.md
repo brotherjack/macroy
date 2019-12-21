@@ -8,6 +8,9 @@ and this project adheres to
 ## [Unreleased]
 ### Added
 - Can now actually delete todos.
+- Now added links to each todo in the index to the todo show page.
+- Added sobelow to check for security errors. This can be done by running 
+  `mix sobelow`.
 
 ### Removed
 - Depressing failure message on the front page.

@@ -63,7 +63,7 @@
     <tbody>
         <%= for todo <- @todos do %>
             <tr>
-                <td><%= todo.name %></td>
+                <td><a href="<%= Routes.todo_path(@socket, :show, todo.id)%>"><%= todo.name %></a></td>
                 <td><%= if todo.is_done, do: "DONE", else: "TODO" %></td>
                 <td><%= todo.category %></td>
                 <td><%= todo.subcategory %></td>

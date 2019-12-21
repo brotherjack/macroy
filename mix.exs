@@ -50,6 +50,7 @@ defmodule Macroy.MixProject do
       {:mox, "~> 0.5", only: :test},
       {:doorman, "~> 0.6.2"},
       {:propcheck, "~> 1.1", only: [:test, :dev]},
+      {:sobelow, "~> 0.8", only: :dev},
 
       # Phoenix Live View
       {:phoenix_live_view, git: "https://github.com/phoenixframework/phoenix_live_view.git", refs: "08bf17184ec6bbc7020b5dfa01a79befdc506f85"},
